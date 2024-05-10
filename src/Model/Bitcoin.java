@@ -6,9 +6,9 @@ package Model;
 
 /**
  *
- * @author Nathan Gabriel
+ * @author unifnleite
  */
-public class Pessoa {
-    private String nome, cpf;
-    private int senha;
+public class Bitcoin extends Moedas implements Tarifacao {
+    private double taxaCompra = 1.02;
+    private double taxaVenda = 1.03;
 }
