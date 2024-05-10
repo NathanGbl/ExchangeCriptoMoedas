@@ -25,34 +25,25 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="opcao2" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="opcao5" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="opcao6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="opcao8" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblOpcao" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtOpcao" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="opcao7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="opcao3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="opcao1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="opcao4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="consultarExtratoBtn" min="-2" max="-2" attributes="0"/>
+                          <Component id="consultarSaldoBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="depositarReaisBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="sacarReaisBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="comprarCriptomoedasBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="venderCriptomoedasBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="atualizarCotacaoBtn" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="sairBtn" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="77" max="32767" attributes="0"/>
+              <EmptySpace pref="113" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,29 +53,22 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="opcao1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="opcao2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="opcao3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="opcao4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="opcao5" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="opcao6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="opcao7" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="opcao8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblOpcao" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="txtOpcao" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <Component id="consultarSaldoBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="consultarExtratoBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="depositarReaisBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="sacarReaisBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="comprarCriptomoedasBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="venderCriptomoedasBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="atualizarCotacaoBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="sairBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,83 +82,44 @@
         <Property name="text" type="java.lang.String" value="Menu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao1">
+    <Component class="javax.swing.JButton" name="consultarSaldoBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="1. Consultar saldo"/>
+        <Property name="text" type="java.lang.String" value="Consultar saldo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao2">
+    <Component class="javax.swing.JButton" name="consultarExtratoBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="2. Consultar extrato"/>
+        <Property name="text" type="java.lang.String" value="Consultar extrato"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao3">
+    <Component class="javax.swing.JButton" name="venderCriptomoedasBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="3. Depositar reais"/>
+        <Property name="text" type="java.lang.String" value="Vender criptomoedas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao4">
+    <Component class="javax.swing.JButton" name="comprarCriptomoedasBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="4. Sacar reais"/>
+        <Property name="text" type="java.lang.String" value="Comprar criptomoedas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao5">
+    <Component class="javax.swing.JButton" name="depositarReaisBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="5. Comprar criptomoedas"/>
+        <Property name="text" type="java.lang.String" value="Depositar reais"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao6">
+    <Component class="javax.swing.JButton" name="sacarReaisBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="6. Vender criptomoedas"/>
+        <Property name="text" type="java.lang.String" value="Sacar reais"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao7">
+    <Component class="javax.swing.JButton" name="atualizarCotacaoBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="7. Atualizar cota&#xe7;&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Atualizar cota&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="opcao8">
+    <Component class="javax.swing.JButton" name="sairBtn">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="8. Sair"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtOpcao">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblOpcao">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Op&#xe7;&#xe3;o:"/>
+        <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
     </Component>
   </SubComponents>

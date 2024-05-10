@@ -4,11 +4,63 @@
  */
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class Login extends javax.swing.JFrame {
+
+    public JLabel getLblCpf() {
+        return lblCpf;
+    }
+
+    public void setLblCpf(JLabel lblCpf) {
+        this.lblCpf = lblCpf;
+    }
+
+    public JLabel getLblSenha() {
+        return lblSenha;
+    }
+
+    public void setLblSenha(JLabel lblSenha) {
+        this.lblSenha = lblSenha;
+    }
+
+    public JButton getLoginBtn() {
+        return loginBtn;
+    }
+
+    public void setLoginBtn(JButton loginBtn) {
+        this.loginBtn = loginBtn;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
+
+    public JTextField getTxtCpf() {
+        return txtCpf;
+    }
+
+    public void setTxtCpf(JTextField txtCpf) {
+        this.txtCpf = txtCpf;
+    }
+
+    public JTextField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JTextField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
 
     /**
      * Creates new form Login

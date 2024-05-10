@@ -4,11 +4,65 @@
  */
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class ConsultarExtrato extends javax.swing.JFrame {
+
+    public JButton getConsultaBtn() {
+        return consultaBtn;
+    }
+
+    public void setConsultaBtn(JButton consultaBtn) {
+        this.consultaBtn = consultaBtn;
+    }
+
+    public JTextArea getConsultaExtrato() {
+        return consultaExtrato;
+    }
+
+    public void setConsultaExtrato(JTextArea consultaExtrato) {
+        this.consultaExtrato = consultaExtrato;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLblSenha() {
+        return lblSenha;
+    }
+
+    public void setLblSenha(JLabel lblSenha) {
+        this.lblSenha = lblSenha;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
+
+    public JTextField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JTextField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
 
     /**
      * Creates new form ConsultarExtrato

@@ -4,11 +4,130 @@
  */
 package View;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class AtualizarCotacao extends javax.swing.JFrame {
+
+    public JButton getAtualizaBtn() {
+        return atualizaBtn;
+    }
+
+    public void setAtualizaBtn(JButton atualizaBtn) {
+        this.atualizaBtn = atualizaBtn;
+    }
+
+    public JRadioButton getBitcoinBtn() {
+        return bitcoinBtn;
+    }
+
+    public void setBitcoinBtn(JRadioButton bitcoinBtn) {
+        this.bitcoinBtn = bitcoinBtn;
+    }
+
+    public ButtonGroup getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(ButtonGroup buttons) {
+        this.buttons = buttons;
+    }
+
+    public JTextField getCotBitcoin() {
+        return cotBitcoin;
+    }
+
+    public void setCotBitcoin(JTextField cotBitcoin) {
+        this.cotBitcoin = cotBitcoin;
+    }
+
+    public JTextField getCotEthereum() {
+        return cotEthereum;
+    }
+
+    public void setCotEthereum(JTextField cotEthereum) {
+        this.cotEthereum = cotEthereum;
+    }
+
+    public JTextField getCotRipple() {
+        return cotRipple;
+    }
+
+    public void setCotRipple(JTextField cotRipple) {
+        this.cotRipple = cotRipple;
+    }
+
+    public JRadioButton getEthereumBtn() {
+        return ethereumBtn;
+    }
+
+    public void setEthereumBtn(JRadioButton ethereumBtn) {
+        this.ethereumBtn = ethereumBtn;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JLabel getLblCotBitcoin() {
+        return lblCotBitcoin;
+    }
+
+    public void setLblCotBitcoin(JLabel lblCotBitcoin) {
+        this.lblCotBitcoin = lblCotBitcoin;
+    }
+
+    public JLabel getLblCotEthereum() {
+        return lblCotEthereum;
+    }
+
+    public void setLblCotEthereum(JLabel lblCotEthereum) {
+        this.lblCotEthereum = lblCotEthereum;
+    }
+
+    public JLabel getLblCotRipple() {
+        return lblCotRipple;
+    }
+
+    public void setLblCotRipple(JLabel lblCotRipple) {
+        this.lblCotRipple = lblCotRipple;
+    }
+
+    public JButton getNovaCotacaoBtn() {
+        return novaCotacaoBtn;
+    }
+
+    public void setNovaCotacaoBtn(JButton novaCotacaoBtn) {
+        this.novaCotacaoBtn = novaCotacaoBtn;
+    }
+
+    public JRadioButton getRippleBtn() {
+        return rippleBtn;
+    }
+
+    public void setRippleBtn(JRadioButton rippleBtn) {
+        this.rippleBtn = rippleBtn;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
 
     /**
      * Creates new form AtualizarCotacao

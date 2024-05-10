@@ -4,11 +4,88 @@
  */
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class Menu extends javax.swing.JFrame {
+
+    public JButton getAtualizarCotacaoBtn() {
+        return atualizarCotacaoBtn;
+    }
+
+    public void setAtualizarCotacaoBtn(JButton atualizarCotacaoBtn) {
+        this.atualizarCotacaoBtn = atualizarCotacaoBtn;
+    }
+
+    public JButton getComprarCriptomoedasBtn() {
+        return comprarCriptomoedasBtn;
+    }
+
+    public void setComprarCriptomoedasBtn(JButton comprarCriptomoedasBtn) {
+        this.comprarCriptomoedasBtn = comprarCriptomoedasBtn;
+    }
+
+    public JButton getConsultarExtratoBtn() {
+        return consultarExtratoBtn;
+    }
+
+    public void setConsultarExtratoBtn(JButton consultarExtratoBtn) {
+        this.consultarExtratoBtn = consultarExtratoBtn;
+    }
+
+    public JButton getConsultarSaldoBtn() {
+        return consultarSaldoBtn;
+    }
+
+    public void setConsultarSaldoBtn(JButton consultarSaldoBtn) {
+        this.consultarSaldoBtn = consultarSaldoBtn;
+    }
+
+    public JButton getDepositarReaisBtn() {
+        return depositarReaisBtn;
+    }
+
+    public void setDepositarReaisBtn(JButton depositarReaisBtn) {
+        this.depositarReaisBtn = depositarReaisBtn;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JButton getSacarReaisBtn() {
+        return sacarReaisBtn;
+    }
+
+    public void setSacarReaisBtn(JButton sacarReaisBtn) {
+        this.sacarReaisBtn = sacarReaisBtn;
+    }
+
+    public JButton getSairBtn() {
+        return sairBtn;
+    }
+
+    public void setSairBtn(JButton sairBtn) {
+        this.sairBtn = sairBtn;
+    }
+
+    public JButton getVenderCriptomoedasBtn() {
+        return venderCriptomoedasBtn;
+    }
+
+    public void setVenderCriptomoedasBtn(JButton venderCriptomoedasBtn) {
+        this.venderCriptomoedasBtn = venderCriptomoedasBtn;
+    }
+
 
     /**
      * Creates new form Menu
@@ -27,50 +104,35 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        opcao1 = new javax.swing.JLabel();
-        opcao2 = new javax.swing.JLabel();
-        opcao3 = new javax.swing.JLabel();
-        opcao4 = new javax.swing.JLabel();
-        opcao5 = new javax.swing.JLabel();
-        opcao6 = new javax.swing.JLabel();
-        opcao7 = new javax.swing.JLabel();
-        opcao8 = new javax.swing.JLabel();
-        txtOpcao = new javax.swing.JTextField();
-        lblOpcao = new javax.swing.JLabel();
+        consultarSaldoBtn = new javax.swing.JButton();
+        consultarExtratoBtn = new javax.swing.JButton();
+        venderCriptomoedasBtn = new javax.swing.JButton();
+        comprarCriptomoedasBtn = new javax.swing.JButton();
+        depositarReaisBtn = new javax.swing.JButton();
+        sacarReaisBtn = new javax.swing.JButton();
+        atualizarCotacaoBtn = new javax.swing.JButton();
+        sairBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Menu");
 
-        opcao1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao1.setText("1. Consultar saldo");
+        consultarSaldoBtn.setText("Consultar saldo");
 
-        opcao2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao2.setText("2. Consultar extrato");
+        consultarExtratoBtn.setText("Consultar extrato");
 
-        opcao3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao3.setText("3. Depositar reais");
+        venderCriptomoedasBtn.setText("Vender criptomoedas");
 
-        opcao4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao4.setText("4. Sacar reais");
+        comprarCriptomoedasBtn.setText("Comprar criptomoedas");
 
-        opcao5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao5.setText("5. Comprar criptomoedas");
+        depositarReaisBtn.setText("Depositar reais");
 
-        opcao6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao6.setText("6. Vender criptomoedas");
+        sacarReaisBtn.setText("Sacar reais");
 
-        opcao7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao7.setText("7. Atualizar cotação");
+        atualizarCotacaoBtn.setText("Atualizar cotação");
 
-        opcao8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        opcao8.setText("8. Sair");
-
-        txtOpcao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        lblOpcao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblOpcao.setText("Opção:");
+        sairBtn.setText("Sair");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,23 +144,17 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
+                        .addGap(141, 141, 141)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(opcao2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(opcao5)
-                                .addComponent(opcao6, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(opcao8, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(lblOpcao)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtOpcao))
-                                    .addComponent(opcao7, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addComponent(opcao3)
-                            .addComponent(opcao1)
-                            .addComponent(opcao4))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                            .addComponent(consultarExtratoBtn)
+                            .addComponent(consultarSaldoBtn)
+                            .addComponent(depositarReaisBtn)
+                            .addComponent(sacarReaisBtn)
+                            .addComponent(comprarCriptomoedasBtn)
+                            .addComponent(venderCriptomoedasBtn)
+                            .addComponent(atualizarCotacaoBtn)
+                            .addComponent(sairBtn))))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,27 +162,22 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(opcao1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opcao2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opcao3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opcao4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opcao5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opcao6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(opcao7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(opcao8)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblOpcao))
-                    .addComponent(txtOpcao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(consultarSaldoBtn)
+                .addGap(18, 18, 18)
+                .addComponent(consultarExtratoBtn)
+                .addGap(18, 18, 18)
+                .addComponent(depositarReaisBtn)
+                .addGap(18, 18, 18)
+                .addComponent(sacarReaisBtn)
+                .addGap(18, 18, 18)
+                .addComponent(comprarCriptomoedasBtn)
+                .addGap(18, 18, 18)
+                .addComponent(venderCriptomoedasBtn)
+                .addGap(18, 18, 18)
+                .addComponent(atualizarCotacaoBtn)
+                .addGap(18, 18, 18)
+                .addComponent(sairBtn)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,16 +219,14 @@ public class Menu extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atualizarCotacaoBtn;
+    private javax.swing.JButton comprarCriptomoedasBtn;
+    private javax.swing.JButton consultarExtratoBtn;
+    private javax.swing.JButton consultarSaldoBtn;
+    private javax.swing.JButton depositarReaisBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblOpcao;
-    private javax.swing.JLabel opcao1;
-    private javax.swing.JLabel opcao2;
-    private javax.swing.JLabel opcao3;
-    private javax.swing.JLabel opcao4;
-    private javax.swing.JLabel opcao5;
-    private javax.swing.JLabel opcao6;
-    private javax.swing.JLabel opcao7;
-    private javax.swing.JLabel opcao8;
-    private javax.swing.JTextField txtOpcao;
+    private javax.swing.JButton sacarReaisBtn;
+    private javax.swing.JButton sairBtn;
+    private javax.swing.JButton venderCriptomoedasBtn;
     // End of variables declaration//GEN-END:variables
 }

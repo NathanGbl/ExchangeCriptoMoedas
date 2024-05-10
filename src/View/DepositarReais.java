@@ -4,11 +4,65 @@
  */
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class DepositarReais extends javax.swing.JFrame {
+
+    public JTextArea getConsultaSaldo() {
+        return consultaSaldo;
+    }
+
+    public void setConsultaSaldo(JTextArea consultaSaldo) {
+        this.consultaSaldo = consultaSaldo;
+    }
+
+    public JButton getDepositaBtn() {
+        return depositaBtn;
+    }
+
+    public void setDepositaBtn(JButton depositaBtn) {
+        this.depositaBtn = depositaBtn;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLblDeposito() {
+        return lblDeposito;
+    }
+
+    public void setLblDeposito(JLabel lblDeposito) {
+        this.lblDeposito = lblDeposito;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
+
+    public JTextField getTxtDeposito() {
+        return txtDeposito;
+    }
+
+    public void setTxtDeposito(JTextField txtDeposito) {
+        this.txtDeposito = txtDeposito;
+    }
 
     /**
      * Creates new form DepositarReais
