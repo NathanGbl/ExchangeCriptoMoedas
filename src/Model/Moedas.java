@@ -6,4 +6,5 @@ package Model;
  */
 abstract class Moedas {
     private double taxaCompra, taxaVenda, cotacao, investimento;
+    abstract double novaCotacao();
 }
