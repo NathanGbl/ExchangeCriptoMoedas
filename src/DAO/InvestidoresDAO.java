@@ -22,11 +22,11 @@ public class InvestidoresDAO {
     }
     
     public void inserir (Investidor investidor) throws SQLException {
-        String sql = "insert into aluno (nome, cpf, senha) values (?, ?, ?)";
+        String sql = "insert into Investidores (nome, cpf, senha) values (?, ?, ?)";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, investidor.getNome());
         statement.setString(2, investidor.getCpf());
-        statement.setString(3, investidor.getSenha());
+        statement.setInt(3, investidor.getSenha());
         statement.execute();
         ResultSet resultado = statement.getResultSet();
     }
@@ -36,11 +36,11 @@ public class InvestidoresDAO {
 //                     + aluno.getUsuario() + "'and senha = '"
 //                     + aluno.getSenha() + "'";
 
-        String sql = "select * from aluno where usuario = ? and senha = ?";
+        String sql = "select * from Investidores where cpf = ? and senha = ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, investidor.getUsuario());
-        statement.setString(2, investidor.getSenha());
+        statement.setString(1, investidor.getCpf());
+        statement.setInt(2, investidor.getSenha());
         statement.execute();
         ResultSet resultado = statement.getResultSet();
        
@@ -48,17 +48,17 @@ public class InvestidoresDAO {
     }
     
     public void atualizar(Investidor investidor) throws SQLException {
-        String sql = "update aluno set senha = ? where usuario = ?";
+        String sql = "update Investidores set senha = ? where cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, investidor.getSenha());
-        statement.setString(2, investidor.getUsuario());
+        statement.setInt(1, investidor.getSenha());
+        statement.setString(2, investidor.getCpf());
         statement.execute();
     }
     
     public void remover(Investidor investidor) throws SQLException {
-        String sql = "delete from aluno where usuario = ?";
+        String sql = "delete from Investidores where cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, investidor.getUsuario());
+        statement.setString(1, investidor.getCpf());
         statement.execute();
     }
 }
