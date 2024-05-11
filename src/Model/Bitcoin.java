@@ -14,6 +14,7 @@ public class Bitcoin extends Moedas implements Tarifacao {
     private double taxaCompra = 1.02;
     private double taxaVenda = 1.03;
     
+    @Override
     public double novaCotacao() {
         Random rand = new Random();
         
