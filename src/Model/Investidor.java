@@ -9,5 +9,5 @@ package Model;
  * @author Nathan Gabriel
  */
 public class Investidor extends Pessoa{
-    
+    private Carteira carteira;
 }

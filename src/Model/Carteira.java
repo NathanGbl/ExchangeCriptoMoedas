@@ -9,5 +9,6 @@ package Model;
  * @author Nathan Gabriel
  */
 public class Carteira extends Investidor{
+    private double saldoReal, saldoBitcoin, saldoEthereum, saldoRipple;
     private Moedas dinheiro;
 }
