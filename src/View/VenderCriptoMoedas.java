@@ -4,11 +4,162 @@
  */
 package View;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class VenderCriptoMoedas extends javax.swing.JFrame {
+
+    public JRadioButton getBitcoinBtn() {
+        return bitcoinBtn;
+    }
+
+    public void setBitcoinBtn(JRadioButton bitcoinBtn) {
+        this.bitcoinBtn = bitcoinBtn;
+    }
+
+    public ButtonGroup getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(ButtonGroup buttons) {
+        this.buttons = buttons;
+    }
+
+    public JTextField getCotBitcoin() {
+        return cotBitcoin;
+    }
+
+    public void setCotBitcoin(JTextField cotBitcoin) {
+        this.cotBitcoin = cotBitcoin;
+    }
+
+    public JTextField getCotEthereum() {
+        return cotEthereum;
+    }
+
+    public void setCotEthereum(JTextField cotEthereum) {
+        this.cotEthereum = cotEthereum;
+    }
+
+    public JTextField getCotRipple() {
+        return cotRipple;
+    }
+
+    public void setCotRipple(JTextField cotRipple) {
+        this.cotRipple = cotRipple;
+    }
+
+    public JRadioButton getEthereumBtn() {
+        return ethereumBtn;
+    }
+
+    public void setEthereumBtn(JRadioButton ethereumBtn) {
+        this.ethereumBtn = ethereumBtn;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6) {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JLabel getLblCotBitcoin() {
+        return lblCotBitcoin;
+    }
+
+    public void setLblCotBitcoin(JLabel lblCotBitcoin) {
+        this.lblCotBitcoin = lblCotBitcoin;
+    }
+
+    public JLabel getLblCotEthereum() {
+        return lblCotEthereum;
+    }
+
+    public void setLblCotEthereum(JLabel lblCotEthereum) {
+        this.lblCotEthereum = lblCotEthereum;
+    }
+
+    public JLabel getLblCotRipple() {
+        return lblCotRipple;
+    }
+
+    public void setLblCotRipple(JLabel lblCotRipple) {
+        this.lblCotRipple = lblCotRipple;
+    }
+
+    public JLabel getLblVenda() {
+        return lblVenda;
+    }
+
+    public void setLblVenda(JLabel lblVenda) {
+        this.lblVenda = lblVenda;
+    }
+
+    public JRadioButton getRippleBtn() {
+        return rippleBtn;
+    }
+
+    public void setRippleBtn(JRadioButton rippleBtn) {
+        this.rippleBtn = rippleBtn;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
+
+    public JTextField getTxtVenda() {
+        return txtVenda;
+    }
+
+    public void setTxtVenda(JTextField txtVenda) {
+        this.txtVenda = txtVenda;
+    }
+
+    public JButton getVenderBtn() {
+        return venderBtn;
+    }
+
+    public void setVenderBtn(JButton venderBtn) {
+        this.venderBtn = venderBtn;
+    }
 
     /**
      * Creates new form VenderCriptoMoedas

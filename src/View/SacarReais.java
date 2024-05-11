@@ -4,11 +4,65 @@
  */
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Nathan Gabriel
  */
 public class SacarReais extends javax.swing.JFrame {
+
+    public JTextArea getConsultaSaldo() {
+        return consultaSaldo;
+    }
+
+    public void setConsultaSaldo(JTextArea consultaSaldo) {
+        this.consultaSaldo = consultaSaldo;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JLabel getLblSaque() {
+        return lblSaque;
+    }
+
+    public void setLblSaque(JLabel lblSaque) {
+        this.lblSaque = lblSaque;
+    }
+
+    public JButton getSacaBtn() {
+        return sacaBtn;
+    }
+
+    public void setSacaBtn(JButton sacaBtn) {
+        this.sacaBtn = sacaBtn;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
+
+    public JTextField getTxtSaque() {
+        return txtSaque;
+    }
+
+    public void setTxtSaque(JTextField txtSaque) {
+        this.txtSaque = txtSaque;
+    }
 
     /**
      * Creates new form SacarReais
