@@ -30,12 +30,13 @@ public class ControllerLogin {
                                       , Integer.parseInt(view.getTxtSenha().getText()));
         Conexao conexao = new Conexao();
         try {
-            System.out.println("Foi0");
+//            System.out.println("Foi0");
             Connection conn = conexao.getConnection();
-            System.out.println("Foi1");
+//            System.out.println("Foi1");
             InvestidoresDAO dao = new InvestidoresDAO(conn);
+//            System.out.println("Foi-1");
             ResultSet res = dao.consultar(investidor);
-            System.out.println("Foi2");
+//            System.out.println("Foi2");
             if (res.next()) {
                 System.out.println("Foi3");
                 JOptionPane.showMessageDialog(view, "Login feito!");
