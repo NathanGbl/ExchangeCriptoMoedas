@@ -8,7 +8,41 @@ package Model;
  *
  * @author Nathan Gabriel
  */
-public class Carteira extends Investidor{
+public class Carteira{
+
     private double saldoReal, saldoBitcoin, saldoEthereum, saldoRipple;
-    private Moedas dinheiro;
+    private Moedas moedas = new Bitcoin();
+    
+    public double getSaldoReal() {
+        return saldoReal;
+    }
+
+    public void setSaldoReal(double saldoReal) {
+        this.saldoReal = saldoReal;
+    }
+
+    public double getSaldoBitcoin() {
+        return saldoBitcoin;
+    }
+
+    public void setSaldoBitcoin(double saldoBitcoin) {
+        this.saldoBitcoin = saldoBitcoin;
+    }
+
+    public double getSaldoEthereum() {
+        return saldoEthereum;
+    }
+
+    public void setSaldoEthereum(double saldoEthereum) {
+        this.saldoEthereum = saldoEthereum;
+    }
+
+    public double getSaldoRipple() {
+        return saldoRipple;
+    }
+
+    public void setSaldoRipple(double saldoRipple) {
+        this.saldoRipple = saldoRipple;
+    }
+    
 }

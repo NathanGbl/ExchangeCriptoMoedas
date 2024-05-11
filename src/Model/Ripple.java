@@ -8,19 +8,14 @@ package Model;
  *
  * @author unifnleite
  */
-public class Bitcoin extends Moedas implements Tarifacao {
-    private double taxaCompra = 1.02;
-    private double taxaVenda = 1.03;
-    
+public class Ripple extends Moedas implements Tarifacao {
+    private double taxaCompra = 1.01;
+    private double taxaVenda = 1.01;
     private double cotacao;
     
-    
-    @Override
     public double getTaxaCompra() {
         return taxaCompra;
     }
-    
-    @Override
     public double getTaxaVenda() {
         return taxaVenda;
     }
@@ -29,8 +24,7 @@ public class Bitcoin extends Moedas implements Tarifacao {
         return cotacao;
     }
     
-    @Override
-    public double saldo(double saldoBitcoin) {
-        return saldoBitcoin;
+    public double saldo(double saldoRipple) {
+        return saldoRipple;
     }
 }
