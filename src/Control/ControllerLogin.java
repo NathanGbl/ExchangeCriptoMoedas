@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package Control;
 
 import DAO.InvestidoresDAO;
 import DAO.Conexao;
@@ -26,20 +26,23 @@ public class ControllerLogin {
     }
     
     public void loginAluno() {
-        Investidor investidor = new Investidor(null, view.getTxtCpf()
-                                      ,view.getTxtSenha().getText());
+        Investidor investidor = new Investidor("", view.getTxtCpf().getText()
+                                      , Integer.parseInt(view.getTxtSenha().getText()));
         Conexao conexao = new Conexao();
         try {
+            System.out.println("Foi0");
             Connection conn = conexao.getConnection();
+            System.out.println("Foi1");
             InvestidoresDAO dao = new InvestidoresDAO(conn);
             ResultSet res = dao.consultar(investidor);
-//            System.out.println(res.next());
+            System.out.println("Foi2");
             if (res.next()) {
+                System.out.println("Foi3");
                 JOptionPane.showMessageDialog(view, "Login feito!");
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
                 Integer senha = res.getInt("senha");
-                Menu viewMenu = new Menu(new Investidor (nome, cpf, senha));
+                Menu viewMenu = new Menu();
                 viewMenu.setVisible(true);
                 view.setVisible(false);
             } else {
