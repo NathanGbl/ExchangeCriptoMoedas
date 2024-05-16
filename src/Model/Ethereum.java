@@ -10,11 +10,12 @@ import java.util.Random;
  *
  * @author unifnleite
  */
-public class Bitcoin extends Moedas implements Tarifacao {
-    private double taxaCompra = 1.02;
-    private double taxaVenda = 1.03;
+public class Ethereum extends Moedas implements Tarifacao {
+    private double taxaCompra = 1.01;
+    private double taxaVenda = 1.02;
+    
     private double cotacao = novaCotacao();
-
+    
     @Override
     public double getTaxaCompra() {
         return taxaCompra;
@@ -30,7 +31,7 @@ public class Bitcoin extends Moedas implements Tarifacao {
     }
     
     @Override
-    public double saldo(double saldoBitcoin) {
-        return saldoBitcoin;
+    public double saldo(double saldoEthereum) {
+        return saldoEthereum;
     }
 }
