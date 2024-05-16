@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.ControllerLogin;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -67,6 +68,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+//        control = new ControllerLogin(this);
     }
 
     /**
@@ -102,6 +104,11 @@ public class Login extends javax.swing.JFrame {
 
         loginBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         loginBtn.setText("Logar");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,7 +136,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(titulo)
-                .addGap(28, 28, 28)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCpf)
                     .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,11 +146,15 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(lblSenha))
                 .addGap(79, 79, 79)
                 .addComponent(loginBtn)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        control.loginAluno();
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +191,7 @@ public class Login extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerLogin control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblSenha;

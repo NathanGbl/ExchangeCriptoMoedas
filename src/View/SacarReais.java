@@ -69,6 +69,7 @@ public class SacarReais extends javax.swing.JFrame {
      */
     public SacarReais() {
         initComponents();
+        control = new ControllerSacarReais();
     }
 
     /**
@@ -86,6 +87,7 @@ public class SacarReais extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         consultaSaldo = new javax.swing.JTextArea();
         sacaBtn = new javax.swing.JButton();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,14 +105,25 @@ public class SacarReais extends javax.swing.JFrame {
 
         sacaBtn.setText("Sacar");
 
+        voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
+        voltarBtn.setBorder(null);
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(titulo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(titulo))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSaque)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -121,14 +134,16 @@ public class SacarReais extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titulo)
-                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titulo)
+                    .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblSaque)
                     .addComponent(txtSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,6 +156,11 @@ public class SacarReais extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +197,7 @@ public class SacarReais extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerSacarReais control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea consultaSaldo;
     private javax.swing.JScrollPane jScrollPane1;
@@ -184,5 +205,6 @@ public class SacarReais extends javax.swing.JFrame {
     private javax.swing.JButton sacaBtn;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtSaque;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }

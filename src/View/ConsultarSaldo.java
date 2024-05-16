@@ -69,6 +69,7 @@ public class ConsultarSaldo extends javax.swing.JFrame {
      */
     public ConsultarSaldo() {
         initComponents();
+        control = new ControllerConsultarSaldo();
     }
 
     /**
@@ -86,6 +87,7 @@ public class ConsultarSaldo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         consultaSaldo = new javax.swing.JTextArea();
         consultaBtn = new javax.swing.JButton();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +105,14 @@ public class ConsultarSaldo extends javax.swing.JFrame {
 
         consultaBtn.setText("Consultar");
 
+        voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
+        voltarBtn.setBorder(null);
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,7 +120,9 @@ public class ConsultarSaldo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addContainerGap()
+                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(titulo)
                             .addGroup(layout.createSequentialGroup()
@@ -129,11 +141,14 @@ public class ConsultarSaldo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titulo)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblSenha)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSenha)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(consultaBtn)
                 .addGap(45, 45, 45)
@@ -143,6 +158,11 @@ public class ConsultarSaldo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +199,7 @@ public class ConsultarSaldo extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerConsultarSaldo control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultaBtn;
     private javax.swing.JTextArea consultaSaldo;
@@ -186,5 +207,6 @@ public class ConsultarSaldo extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtSenha;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }

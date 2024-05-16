@@ -190,6 +190,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
      */
     public ComprarCriptoMoedas() {
         initComponents();
+        control = new ControllerComprarCripto();
     }
 
     /**
@@ -222,6 +223,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -334,6 +336,14 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
+        voltarBtn.setBorder(null);
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -346,7 +356,9 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSaque, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
+                        .addContainerGap()
+                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(138, 138, 138)
                         .addComponent(titulo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -362,9 +374,14 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(titulo)
-                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSaque))
@@ -377,6 +394,11 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -413,6 +435,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerComprarCripto control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bitcoinBtn;
     private javax.swing.ButtonGroup buttons;
@@ -435,5 +458,6 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
     private javax.swing.JRadioButton rippleBtn;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtSaque;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }

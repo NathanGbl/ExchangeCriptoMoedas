@@ -38,7 +38,7 @@ public class ControllerLogin {
             ResultSet res = dao.consultar(investidor);
 //            System.out.println("Foi2");
             if (res.next()) {
-                System.out.println("Foi3");
+//                System.out.println("Foi3");
                 JOptionPane.showMessageDialog(view, "Login feito!");
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");

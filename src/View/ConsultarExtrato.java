@@ -69,6 +69,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
      */
     public ConsultarExtrato() {
         initComponents();
+        control = new ControllerConsultarExtrato();
     }
 
     /**
@@ -86,6 +87,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
         consultaExtrato = new javax.swing.JTextArea();
         consultaBtn = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +105,14 @@ public class ConsultarExtrato extends javax.swing.JFrame {
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setText("Consultar Extrato");
 
+        voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
+        voltarBtn.setBorder(null);
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,14 +122,17 @@ public class ConsultarExtrato extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(consultaBtn)
                         .addGap(205, 205, 205))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(titulo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(titulo))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblSenha)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -129,8 +142,13 @@ public class ConsultarExtrato extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(titulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblSenha)
@@ -144,6 +162,11 @@ public class ConsultarExtrato extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +203,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerConsultarExtrato control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultaBtn;
     private javax.swing.JTextArea consultaExtrato;
@@ -187,5 +211,6 @@ public class ConsultarExtrato extends javax.swing.JFrame {
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtSenha;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }
