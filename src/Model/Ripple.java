@@ -4,6 +4,8 @@
  */
 package Model;
 
+import java.util.Random;
+
 /**
  *
  * @author unifnleite
@@ -11,11 +13,14 @@ package Model;
 public class Ripple extends Moedas implements Tarifacao {
     private double taxaCompra = 1.01;
     private double taxaVenda = 1.01;
-    private double cotacao;
+    private double cotacao = novaCotacao();
     
+    @Override
     public double getTaxaCompra() {
         return taxaCompra;
     }
+    
+    @Override
     public double getTaxaVenda() {
         return taxaVenda;
     }
@@ -24,6 +29,7 @@ public class Ripple extends Moedas implements Tarifacao {
         return cotacao;
     }
     
+    @Override
     public double saldo(double saldoRipple) {
         return saldoRipple;
     }
