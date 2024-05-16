@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.ControllerLogin
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -67,6 +68,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        control = new ControllerLogin(this);
     }
 
     /**
@@ -180,6 +182,7 @@ public class Login extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerLogin control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblSenha;
