@@ -134,6 +134,7 @@ public class AtualizarCotacao extends javax.swing.JFrame {
      */
     public AtualizarCotacao() {
         initComponents();
+        control = new ControllerCotacao(this);
     }
 
     /**
@@ -159,6 +160,7 @@ public class AtualizarCotacao extends javax.swing.JFrame {
         cotEthereum = new javax.swing.JTextField();
         cotBitcoin = new javax.swing.JTextField();
         novaCotacaoBtn = new javax.swing.JButton();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,12 +238,22 @@ public class AtualizarCotacao extends javax.swing.JFrame {
 
         novaCotacaoBtn.setText("Nova Cotação");
 
+        voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
+        voltarBtn.setBorder(null);
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(titulo)
                 .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
@@ -260,13 +272,18 @@ public class AtualizarCotacao extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(titulo)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(titulo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(novaCotacaoBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(atualizaBtn)
                 .addGap(47, 47, 47))
         );
@@ -277,6 +294,11 @@ public class AtualizarCotacao extends javax.swing.JFrame {
     private void atualizaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizaBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_atualizaBtnActionPerformed
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,6 +335,7 @@ public class AtualizarCotacao extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerCotacao control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizaBtn;
     private javax.swing.JRadioButton bitcoinBtn;
@@ -328,5 +351,6 @@ public class AtualizarCotacao extends javax.swing.JFrame {
     private javax.swing.JButton novaCotacaoBtn;
     private javax.swing.JRadioButton rippleBtn;
     private javax.swing.JLabel titulo;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }

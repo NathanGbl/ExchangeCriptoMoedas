@@ -119,18 +119,53 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setText("Menu");
 
         consultarSaldoBtn.setText("Consultar saldo");
+        consultarSaldoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarSaldoBtnActionPerformed(evt);
+            }
+        });
 
         consultarExtratoBtn.setText("Consultar extrato");
+        consultarExtratoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarExtratoBtnActionPerformed(evt);
+            }
+        });
 
         venderCriptomoedasBtn.setText("Vender criptomoedas");
+        venderCriptomoedasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                venderCriptomoedasBtnActionPerformed(evt);
+            }
+        });
 
         comprarCriptomoedasBtn.setText("Comprar criptomoedas");
+        comprarCriptomoedasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comprarCriptomoedasBtnActionPerformed(evt);
+            }
+        });
 
         depositarReaisBtn.setText("Depositar reais");
+        depositarReaisBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depositarReaisBtnActionPerformed(evt);
+            }
+        });
 
         sacarReaisBtn.setText("Sacar reais");
+        sacarReaisBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sacarReaisBtnActionPerformed(evt);
+            }
+        });
 
         atualizarCotacaoBtn.setText("Atualizar cotação");
+        atualizarCotacaoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarCotacaoBtnActionPerformed(evt);
+            }
+        });
 
         sairBtn.setText("Sair");
 
@@ -182,6 +217,48 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void consultarSaldoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSaldoBtnActionPerformed
+        ConsultarSaldo consultSaldo = new ConsultarSaldo();
+        consultSaldo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_consultarSaldoBtnActionPerformed
+
+    private void consultarExtratoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarExtratoBtnActionPerformed
+        ConsultarExtrato consultExtrato = new ConsultarExtrato();
+        consultExtrato.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_consultarExtratoBtnActionPerformed
+
+    private void depositarReaisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositarReaisBtnActionPerformed
+        DepositarReais depositReais = new DepositarReais();
+        depositReais.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_depositarReaisBtnActionPerformed
+
+    private void sacarReaisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacarReaisBtnActionPerformed
+        SacarReais sacarReais = new SacarReais();
+        sacarReais.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_sacarReaisBtnActionPerformed
+
+    private void comprarCriptomoedasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarCriptomoedasBtnActionPerformed
+        ComprarCriptoMoedas comprarCripto = new ComprarCriptoMoedas();
+        comprarCripto.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_comprarCriptomoedasBtnActionPerformed
+
+    private void venderCriptomoedasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderCriptomoedasBtnActionPerformed
+        VenderCriptoMoedas venderCripto = new VenderCriptoMoedas();
+        venderCripto.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_venderCriptomoedasBtnActionPerformed
+
+    private void atualizarCotacaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarCotacaoBtnActionPerformed
+        AtualizarCotacao atualizaCot = new AtualizarCotacao();
+        atualizaCot.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_atualizarCotacaoBtnActionPerformed
 
     /**
      * @param args the command line arguments

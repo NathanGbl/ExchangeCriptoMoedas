@@ -86,36 +86,57 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar saldo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarSaldoBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="consultarExtratoBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar extrato"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarExtratoBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="venderCriptomoedasBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Vender criptomoedas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="venderCriptomoedasBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="comprarCriptomoedasBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Comprar criptomoedas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comprarCriptomoedasBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="depositarReaisBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Depositar reais"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="depositarReaisBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="sacarReaisBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sacar reais"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sacarReaisBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="atualizarCotacaoBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar cota&#xe7;&#xe3;o"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarCotacaoBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="sairBtn">
       <Properties>

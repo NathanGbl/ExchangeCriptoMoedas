@@ -69,6 +69,7 @@ public class DepositarReais extends javax.swing.JFrame {
      */
     public DepositarReais() {
         initComponents();
+        control = new ControllerDepositarReais();
     }
 
     /**
@@ -86,6 +87,7 @@ public class DepositarReais extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         consultaSaldo = new javax.swing.JTextArea();
         depositaBtn = new javax.swing.JButton();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,16 +105,27 @@ public class DepositarReais extends javax.swing.JFrame {
 
         depositaBtn.setText("Depositar");
 
+        voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
+        voltarBtn.setBorder(null);
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(titulo)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                                .addComponent(titulo))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblDeposito)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -129,8 +142,10 @@ public class DepositarReais extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titulo)
+                    .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDeposito, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDeposito, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -143,6 +158,11 @@ public class DepositarReais extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +199,7 @@ public class DepositarReais extends javax.swing.JFrame {
 //        });
 //    }
 
+    private ControllerDepositarReais control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea consultaSaldo;
     private javax.swing.JButton depositaBtn;
@@ -186,5 +207,6 @@ public class DepositarReais extends javax.swing.JFrame {
     private javax.swing.JLabel lblDeposito;
     private javax.swing.JLabel titulo;
     private javax.swing.JTextField txtDeposito;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }
