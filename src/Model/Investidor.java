@@ -9,5 +9,15 @@ package Model;
  * @author Nathan Gabriel
  */
 public class Investidor extends Pessoa{
+
+    public Carteira getCarteira() {
+        return carteira;
+    }
     
+    private Carteira carteira;
+    
+    public Investidor(String nome, String cpf, int senha) {
+        super(nome, cpf, senha);
+        carteira = new Carteira();
+    }
 }

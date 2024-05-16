@@ -10,6 +10,12 @@ package Model;
  */
 public class Pessoa {
 
+    public Pessoa(String nome, String cpf, int senha) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+    }
+
     public String getNome() {
         return nome;
     }
