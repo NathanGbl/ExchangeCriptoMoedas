@@ -22,7 +22,7 @@ public class InvestidoresDAO {
     }
     
     public void inserir (Investidor investidor) throws SQLException {
-        String sql = "insert into Investidores (nome, cpf, senha) values (?, ?, ?)";
+        String sql = "insert into investidores (nome, cpf, senha) values (?, ?, ?)";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, investidor.getNome());
         statement.setString(2, investidor.getCpf());
@@ -36,7 +36,7 @@ public class InvestidoresDAO {
 //                     + aluno.getUsuario() + "'and senha = '"
 //                     + aluno.getSenha() + "'";
 
-        String sql = "select * from Investidores where cpf = ? and senha = ?";
+        String sql = "select * from investidores where cpf = ? and senha = ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, investidor.getCpf());
@@ -48,7 +48,7 @@ public class InvestidoresDAO {
     }
     
     public void atualizar(Investidor investidor) throws SQLException {
-        String sql = "update Investidores set senha = ? where cpf = ?";
+        String sql = "update investidores set senha = ? where cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setInt(1, investidor.getSenha());
         statement.setString(2, investidor.getCpf());
@@ -56,7 +56,7 @@ public class InvestidoresDAO {
     }
     
     public void remover(Investidor investidor) throws SQLException {
-        String sql = "delete from Investidores where cpf = ?";
+        String sql = "delete from investidores where cpf = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, investidor.getCpf());
         statement.execute();
