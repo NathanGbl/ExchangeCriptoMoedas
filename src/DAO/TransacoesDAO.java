@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import Model.Moedas;
 
 /**
  *
@@ -65,12 +66,17 @@ public class TransacoesDAO {
     public void atualizarCotacao(Investidor investidor, String moeda) throws SQLException {
         String sql = "update transacoes set cotacao = ? where moeda = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
+        double novaCotacao = Moedas.novaCotacao();
+
         if (moeda.equals("Bitcoin")) {
-            statement.setDouble(1, investidor.getCarteira().getBitcoin());
+            investidor.getCarteira().getBitcoin().setCotacao(novaCotacao);
+            statement.setDouble(1, investidor.getCarteira().getBitcoin().getCotacao());
         } else if (moeda.equals("Ethereum")) {
-            
+            investidor.getCarteira().getEthereum().setCotacao(novaCotacao);
+            statement.setDouble(1, investidor.getCarteira().Ethereum().getCotacao());
         } else if (moeda.equals("Ripple")) {
-            
+            investidor.getCarteira().getRipple().setCotacao(novaCotacao);
+            statement.setDouble(1, investidor.getCarteira().getRipple().getCotacao());
         }
         statement.setString(2, investidor.getCpf());
         statement.execute();

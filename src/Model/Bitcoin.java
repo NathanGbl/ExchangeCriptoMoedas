@@ -19,6 +19,10 @@ public class Bitcoin extends Moedas implements Tarifacao {
     public double getTaxaCompra() {
         return taxaCompra;
     }
+
+    public void setCotacao(double cotacao) {
+        this.cotacao = cotacao;
+    }
     
     @Override
     public double getTaxaVenda() {

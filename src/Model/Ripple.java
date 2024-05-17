@@ -13,7 +13,7 @@ import java.util.Random;
 public class Ripple extends Moedas implements Tarifacao {
     private double taxaCompra = 1.01;
     private double taxaVenda = 1.01;
-    private double cotacao = novaCotacao();
+    private double cotacao = Moedas.novaCotacao();
     
     @Override
     public double getTaxaCompra() {

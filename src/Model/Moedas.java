@@ -6,7 +6,7 @@ import java.util.Random;
  *
  * @author Nathan Gabriel
  */
-abstract class Moedas {
+public abstract class Moedas {
     abstract double saldo(double saldo);
     
     public static double novaCotacao() {
