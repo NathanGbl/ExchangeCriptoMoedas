@@ -6,7 +6,7 @@ import java.util.Random;
  *
  * @author Nathan Gabriel
  */
-abstract class Moedas {
+public abstract class Moedas {
     abstract double saldo(double saldo);
     
     public static double novaCotacao() {
@@ -18,5 +18,17 @@ abstract class Moedas {
         double numFormatado = Math.round(numeroAleatorio * 100.0) / 100.0;
         
         return numFormatado;
+    }
+    
+    public static Moedas fabricaMoedas(String tipo) {
+        if (tipo.equals("Bitcoin")) {
+            return new Bitcoin();
+        } else if (tipo.equals("Ethereum")) {
+            return new Ethereum();
+        } else if (tipo.equals("Ripple")) {
+            return new Ripple();
+        } else {
+            return null;
+        }
     }
 }

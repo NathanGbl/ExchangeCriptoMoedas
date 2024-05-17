@@ -10,11 +10,13 @@ package Model;
  */
 public class Carteira{
     private double saldoReal, saldoBitcoin, saldoEthereum, saldoRipple;
-    private Moedas bitcoin, ethereum, ripple;
+    private Bitcoin bitcoin;
+    private Ethereum ethereum;
+    private Ripple ripple;
     public Carteira(double saldoReal, double saldoBitcoin, double saldoEthereum, double saldoRipple) {
-        setBitcoin(new Bitcoin());
-        setEthereum(new Ethereum());
-        setRipple(new Ripple());
+        this.bitcoin = ((Bitcoin)Moedas.fabricaMoedas("Bitcoin"));
+        this.ethereum = ((Ethereum)Moedas.fabricaMoedas("Ethereum"));
+        this.ripple = ((Ripple)Moedas.fabricaMoedas("Ripple"));
         setSaldoReal(saldoReal);
         setSaldoBitcoin(saldoBitcoin);
         setSaldoEthereum(saldoEthereum);
@@ -22,37 +24,13 @@ public class Carteira{
     }
 
     public Carteira() {
-        setBitcoin(new Bitcoin());
-        setEthereum(new Ethereum());
-        setRipple(new Ripple());
+        this.bitcoin = ((Bitcoin)Moedas.fabricaMoedas("Bitcoin"));
+        this.ethereum = ((Ethereum)Moedas.fabricaMoedas("Ethereum"));
+        this.ripple = ((Ripple)Moedas.fabricaMoedas("Ripple"));
         setSaldoReal(0);
         setSaldoBitcoin(0);
         setSaldoEthereum(0);
         setSaldoRipple(0);
-    }
-    
-    public Moedas getBitcoin() {
-        return bitcoin;
-    }
-
-    public void setBitcoin(Moedas bitcoin) {
-        this.bitcoin = bitcoin;
-    }
-
-    public Moedas getEthereum() {
-        return ethereum;
-    }
-
-    public void setEthereum(Moedas ethereum) {
-        this.ethereum = ethereum;
-    }
-
-    public Moedas getRipple() {
-        return ripple;
-    }
-
-    public void setRipple(Moedas ripple) {
-        this.ripple = ripple;
     }
 
     public double getSaldoReal() {
@@ -86,4 +64,30 @@ public class Carteira{
     public void setSaldoRipple(double saldoRipple) {
         this.saldoRipple = saldoRipple;
     }
+
+    public Bitcoin getBitcoin() {
+        return bitcoin;
+    }
+
+    public void setBitcoin(Bitcoin bitcoin) {
+        this.bitcoin = bitcoin;
+    }
+
+    public Ethereum getEthereum() {
+        return ethereum;
+    }
+
+    public void setEthereum(Ethereum ethereum) {
+        this.ethereum = ethereum;
+    }
+
+    public Ripple getRipple() {
+        return ripple;
+    }
+
+    public void setRipple(Ripple ripple) {
+        this.ripple = ripple;
+    }
+    
+    
 }
