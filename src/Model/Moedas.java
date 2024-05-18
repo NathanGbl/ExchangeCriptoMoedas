@@ -19,4 +19,16 @@ public abstract class Moedas {
         
         return numFormatado;
     }
+    
+    public static Moedas fabricaMoedas(String tipo) {
+        if (tipo.equals("Bitcoin")) {
+            return new Bitcoin();
+        } else if (tipo.equals("Ethereum")) {
+            return new Ethereum();
+        } else if (tipo.equals("Ripple")) {
+            return new Ripple();
+        } else {
+            return null;
+        }
+    }
 }

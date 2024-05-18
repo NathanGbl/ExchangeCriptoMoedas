@@ -14,11 +14,15 @@ public class Ethereum extends Moedas implements Tarifacao {
     private double taxaCompra = 1.01;
     private double taxaVenda = 1.02;
     
-    private double cotacao = novaCotacao();
+    private double cotacao = Moedas.novaCotacao();
     
     @Override
     public double getTaxaCompra() {
         return taxaCompra;
+    }
+
+    public void setCotacao(double cotacao) {
+        this.cotacao = cotacao;
     }
     
     @Override
