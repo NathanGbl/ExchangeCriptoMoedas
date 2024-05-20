@@ -57,23 +57,6 @@ public class TransacoesDAO {
         return resultado;
     }
     
-    public ResultSet consultarSaldos (Investidor investidor) throws SQLException {
-
-//        String sql = "select * from aluno where usuário = '"
-//                     + aluno.getUsuario() + "'and senha = '"
-//                     + aluno.getSenha() + "'";
-
-        String sql = "select * from transacoes where senha = ?"
-                   + " order by senha desc limit 1";
-
-        PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, investidor.getSenha());
-        statement.execute();
-        ResultSet resultado = statement.getResultSet();
-       
-        return resultado;
-    }
-    
     public void atualizarCotacao(Investidor investidor, 
                                  String moeda) throws SQLException {
         String sql = "update transacoes set cotacao = ? where moeda = ?";
