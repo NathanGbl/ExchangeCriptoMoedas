@@ -69,7 +69,6 @@ public class ConsultarSaldo extends javax.swing.JFrame {
      */
     public ConsultarSaldo() {
         initComponents();
-        control = new ControllerConsultarSaldo();
     }
 
     /**
@@ -199,7 +198,6 @@ public class ConsultarSaldo extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerConsultarSaldo control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultaBtn;
     private javax.swing.JTextArea consultaSaldo;

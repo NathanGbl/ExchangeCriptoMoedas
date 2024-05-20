@@ -4,7 +4,7 @@
  */
 package View;
 
-import Control.ControllerLogin;
+import Control.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -68,7 +68,21 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-//        control = new ControllerLogin(this);
+        ConsultarSaldo consultSaldo = new ConsultarSaldo();
+        ConsultarExtrato consultarExtrato = new ConsultarExtrato();
+        DepositarReais depositarReais = new DepositarReais();
+        SacarReais sacarReais = new SacarReais();
+        ComprarCriptoMoedas comprarCripto = new ComprarCriptoMoedas();
+        VenderCriptoMoedas venderCripto = new VenderCriptoMoedas();
+        AtualizarCotacao atualizarCotacao = new AtualizarCotacao();
+        control = new Controller(this, 
+                                 consultSaldo, 
+                                 consultarExtrato, 
+                                 depositarReais, 
+                                 sacarReais, 
+                                 comprarCripto, 
+                                 venderCripto, 
+                                 atualizarCotacao);
     }
 
     /**
@@ -191,7 +205,7 @@ public class Login extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerLogin control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblSenha;
