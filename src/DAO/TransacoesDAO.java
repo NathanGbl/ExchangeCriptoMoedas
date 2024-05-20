@@ -21,23 +21,26 @@ public class TransacoesDAO {
     }
     
     public void inserir (Investidor investidor, 
-                         String data,
-                            ) throws SQLException {
+                         String data, 
+                         String operacao, 
+                         double valor, 
+                         String moeda, 
+                         double taxa) throws SQLException {
         String sql = "insert into transacoes (senha, data, operacao, valor, "
                 + "moeda, taxa, saldoreal, saldobitcoin, "
                 + "saldoethereum, saldoripple)	"
                 + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, investidor.getNome());
-        statement.setString(2, investidor.getCpf());
-        statement.setInt(3, investidor.getSenha());
-        statement.setString(4, investidor.getNome());
-        statement.setString(5, investidor.getCpf());
-        statement.setInt(6, investidor.getSenha());
-        statement.setString(7, investidor.getNome());
-        statement.setString(8, investidor.getCpf());
-        statement.setInt(9, investidor.getSenha());
-        statement.setInt(10, investidor.getSenha());
+        statement.setInt(1, investidor.getSenha());
+        statement.setString(2, data);
+        statement.setString(3, operacao);
+        statement.setDouble(4, valor);
+        statement.setString(5, moeda);
+        statement.setDouble(6, taxa);
+        statement.setDouble(7, investidor.getCarteira().getSaldoReal());
+        statement.setDouble(8, investidor.getCarteira().getSaldoBitcoin());
+        statement.setDouble(9, investidor.getCarteira().getSaldoEthereum());
+        statement.setDouble(10, investidor.getCarteira().getSaldoRipple());
         statement.execute();
         ResultSet resultado = statement.getResultSet();
     }

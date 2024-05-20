@@ -69,7 +69,6 @@ public class DepositarReais extends javax.swing.JFrame {
      */
     public DepositarReais() {
         initComponents();
-        control = new ControllerDepositarReais();
     }
 
     /**
@@ -199,7 +198,6 @@ public class DepositarReais extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerDepositarReais control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea consultaSaldo;
     private javax.swing.JButton depositaBtn;

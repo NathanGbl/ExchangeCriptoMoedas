@@ -166,7 +166,6 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
      */
     public VenderCriptoMoedas() {
         initComponents();
-        control = new ControllerVenderCripto();
     }
 
     /**
@@ -392,8 +391,6 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
-    private ControllerVenderCripto control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bitcoinBtn;
     private javax.swing.ButtonGroup buttons;
