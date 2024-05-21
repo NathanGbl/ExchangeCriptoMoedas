@@ -44,7 +44,7 @@ public class TransacoesDAO {
         statement.execute();
         ResultSet resultado = statement.getResultSet();
     }
-    public ResultSet consultar (Investidor investidor) throws SQLException {
+    public ResultSet consultarExtrato (Investidor investidor) throws SQLException {
 
 //        String sql = "select * from aluno where usuário = '"
 //                     + aluno.getUsuario() + "'and senha = '"
@@ -60,6 +60,37 @@ public class TransacoesDAO {
         return resultado;
     }
     
+    public ResultSet consultar (Investidor investidor, String dado) throws SQLException {
+
+//        String sql = "select * from aluno where usuário = '"
+//                     + aluno.getUsuario() + "'and senha = '"
+//                     + aluno.getSenha() + "'";
+
+        String sql = "select * from transacoes where senha = ?"
+                + "order by senha desc limit 1";
+
+        PreparedStatement statement = conn.prepareStatement(sql);
+        statement.setInt(1, investidor.getSenha());
+        statement.execute();
+        ResultSet resultado = statement.getResultSet();
+       
+        return resultado;
+    }
+    
+    public String doubleToString(double[] cotacao) {
+        StringBuilder sb = new StringBuilder();
+        sb.append('{');
+        for (int i = 0; i < cotacao.length; i++) {
+            sb.append(cotacao[i]);
+            if (i < cotacao.length - 1) {
+                    sb.append(',');
+            }
+        }
+        sb.append('}');
+        String stringformatada = sb.toString();
+        return stringformatada;
+    }
+    
     public void atualizarCotacao(Investidor investidor, 
                                  String moeda) throws SQLException {
         String sql = "update transacoes set cotacao = ? where moeda = ?";
@@ -68,15 +99,18 @@ public class TransacoesDAO {
 
         if (moeda.equals("Bitcoin")) {
             investidor.getCarteira().getBitcoin().setCotacao(novaCotacao);
-            statement.setDouble(1, investidor.getCarteira().getBitcoin().getCotacao());
+            statement.setDouble(1,
+                    investidor.getCarteira().getBitcoin().getCotacao());
             statement.setString(2, moeda);
         } else if (moeda.equals("Ethereum")) {
             investidor.getCarteira().getEthereum().setCotacao(novaCotacao);
-            statement.setDouble(1, investidor.getCarteira().getEthereum().getCotacao());
+            statement.setDouble(1, 
+                    investidor.getCarteira().getEthereum().getCotacao());
             statement.setString(2, moeda);
         } else if (moeda.equals("Ripple")) {
             investidor.getCarteira().getRipple().setCotacao(novaCotacao);
-            statement.setDouble(1, investidor.getCarteira().getRipple().getCotacao());
+            statement.setDouble(1, 
+                    investidor.getCarteira().getRipple().getCotacao());
             statement.setString(2, moeda);
         }
         statement.execute();
