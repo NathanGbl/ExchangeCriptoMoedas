@@ -92,10 +92,9 @@ public class TransacoesDAO {
     }
     
     public void atualizarCotacao(Investidor investidor, 
-                                 String moeda) throws SQLException {
+                                 String moeda, double novaCotacao) throws SQLException {
         String sql = "update transacoes set cotacao = ? where moeda = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
-        double novaCotacao = Moedas.novaCotacao();
 
         if (moeda.equals("Bitcoin")) {
             investidor.getCarteira().getBitcoin().setCotacao(novaCotacao);
