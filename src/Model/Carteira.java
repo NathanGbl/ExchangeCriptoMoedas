@@ -98,4 +98,28 @@ public class Carteira{
         String dataHoraAtual = now.format(forma);
         return dataHoraAtual;
     }
+    
+    public void deposito(double valor) {
+        double montante = getSaldoReal() + valor;
+        setSaldoReal(montante);
+    }
+    
+    public void saque(double valor) {
+        double montante = getSaldoReal() - valor;
+        setSaldoReal(montante);
+    }
+    
+    public void comprarCripto(double valor, String moeda) {
+        double montante;
+        if (moeda.equals("Bitcoin")) {
+            montante = valor / bitcoin.getCotacao();
+            saldoBitcoin += montante;
+        } else if (moeda.equals("Ethereum")) {
+            montante = valor / ethereum.getCotacao();
+            saldoEthereum += montante;
+        } else if (moeda.equals("Ripple")) {
+            montante = valor / ripple.getCotacao();
+            saldoRipple += montante;
+        }
+    }
 }
