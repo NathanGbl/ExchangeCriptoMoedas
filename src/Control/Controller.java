@@ -27,59 +27,26 @@ import View.VenderCriptoMoedas;
  * @author unifnleite
  */
 public class Controller {
-    private static Controller control;
-    private Login login;
-    private ConsultarSaldo consultSaldo;
-    private ConsultarExtrato consultarExtrato;
-    private DepositarReais depositarReais;
-    private SacarReais sacarReais;
-    private ComprarCriptoMoedas comprarCripto;
-    private VenderCriptoMoedas venderCripto;
-    private AtualizarCotacao atualizarCotacao;
-    private Investidor investidor;
 
-    public Controller(Login view, 
-                      ConsultarSaldo consultSaldo,
-                      ConsultarExtrato consultarExtrato,
-                      DepositarReais depositarReais,
-                      SacarReais sacarReais,
-                      ComprarCriptoMoedas comprarCripto,
-                      VenderCriptoMoedas venderCripto,
-                      AtualizarCotacao atualizarCotacao) {
-        this.login = view;
-        this.consultSaldo = consultSaldo;
-        this.consultarExtrato = consultarExtrato;
-        this.depositarReais = depositarReais;
-        this.sacarReais = sacarReais;
-        this.comprarCripto = comprarCripto;
-        this.venderCripto = venderCripto;
-        this.atualizarCotacao = atualizarCotacao;
+    public Investidor getInvestidor() {
+        return investidor;
+    }
+
+    public void setInvestidor(Investidor investidor) {
+        this.investidor = investidor;
     }
     
-    public static Controller getControl(Login view, 
-                                        ConsultarSaldo consultSaldo,
-                                        ConsultarExtrato consultarExtrato,
-                                        DepositarReais depositarReais,
-                                        SacarReais sacarReais,
-                                        ComprarCriptoMoedas comprarCripto,
-                                        VenderCriptoMoedas venderCripto,
-                                        AtualizarCotacao atualizarCotacao) {
+    private static Controller control;
+    private Investidor investidor;
+
+    public static Controller getControl() {
         if (control == null) {
-            control = new Controller(view, 
-                    consultSaldo, 
-                    consultarExtrato, 
-                    depositarReais, 
-                    sacarReais, 
-                    comprarCripto, 
-                    venderCripto, 
-                    atualizarCotacao);
+            control = new Controller();
         }
         return control;
     }
     
-    public void loginAluno() {
-        Investidor investidor = new Investidor("", login.getTxtCpf().getText()
-                                      , Integer.parseInt(login.getTxtSenha().getText()));
+    public void loginAluno(String cpf, int senha, Login login) {
         Conexao conexao = new Conexao();
         try {
 //            System.out.println("Foi0");
@@ -87,13 +54,17 @@ public class Controller {
 //            System.out.println("Foi1");
             InvestidoresDAO dao = new InvestidoresDAO(conn);
 //            System.out.println("Foi-1");
-            ResultSet res = dao.consultar(investidor);
+            ResultSet res = dao.consultar(cpf, senha);
 //            System.out.println("Foi2");
             if (res.next()) {
 //                System.out.println("Foi3");
+                String nome = res.getString("nome");
+                cpf = res.getString("cpf");
+                senha = res.getInt("senha");
+                investidor = new Investidor(nome, cpf, senha);
                 JOptionPane.showMessageDialog(login, "Login feito!");
-                Menu viewMenu = new Menu();
-                viewMenu.setVisible(true);
+                Menu menu = new Menu();
+                menu.setVisible(true);
                 login.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(login, "Login não efetuado!");
@@ -103,19 +74,25 @@ public class Controller {
         }
     }
     
-    public void consultarSaldo() {
+    public void consultarSaldo(ConsultarSaldo consultSaldo, int senha) {
         Conexao conexao = new Conexao();
         try {
-//            System.out.println("Foi0");
+            System.out.println("Foi0");
             Connection conn = conexao.getConnection();
-//            System.out.println("Foi1");
+            System.out.println("Foi1");
             TransacoesDAO dao = new TransacoesDAO(conn);
-//            System.out.println("Foi-1");
-            ResultSet res = dao.consultar(investidor);
-//            System.out.println("Foi2");
+            System.out.println("Foi-1");
+            ResultSet res = dao.consultar(senha, "");
+            System.out.println("Foi2");
             if (res.next()) {
-//              System.out.println("Foi3");
-                consultSaldo.setVisible(false);
+              System.out.println("Foi3");
+                String info = investidor.getNome() +
+                        "\nCPF: " + investidor.getCpf() +
+                        "\n\nSaldo Real: " + res.getDouble("saldoReal") +
+                        "\nSaldo Bitcoin: " + res.getDouble("saldoBitcoin") +
+                        "\nSaldo Ethereum: " + res.getDouble("saldoEthereum") +
+                        "\nSaldo Ripple: " + res.getDouble("saldoRipple");
+                consultSaldo.getConsultaSaldo().setText(info);
             } else {
                 JOptionPane.showMessageDialog(consultSaldo, "Senha incorreta");
             }
@@ -124,7 +101,33 @@ public class Controller {
         }
     }
     
-    public void consultarExtrato() {
-        
+    public String linhaTabela(ResultSet res) {
+        ResultSetMetaData resMT = res.getMetaData();
+    }
+    
+    public void consultarExtrato(ConsultarExtrato consultarExtrato, int senha) {
+        Conexao conexao = new Conexao();
+        try {
+//            System.out.println("Foi0");
+            Connection conn = conexao.getConnection();
+//            System.out.println("Foi1");
+            TransacoesDAO dao = new TransacoesDAO(conn);
+//            System.out.println("Foi-1");
+            ResultSet res = dao.consultarExtrato(senha);
+//            System.out.println("Foi2");
+            String info = "";
+            if (res.next()){
+                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
+                while (res.next()) {
+                info += "\n" + res.getRow();
+                System.out.println("Foi");
+                }
+                consultarExtrato.getConsultaExtrato().setText(info);
+            } else {
+                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
+        }
     }
 }
