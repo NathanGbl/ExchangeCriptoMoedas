@@ -6,6 +6,8 @@ package Model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import View.SacarReais;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,22 +106,89 @@ public class Carteira{
         setSaldoReal(montante);
     }
     
-    public void saque(double valor) {
+    public void saque(double valor, SacarReais sacarReais) {
         double montante = getSaldoReal() - valor;
-        setSaldoReal(montante);
+        if (montante < 0) {
+            JOptionPane.showMessageDialog(sacarReais, "Saldo não pode ficar negativo");
+        } else {
+            setSaldoReal(montante);
+        }
     }
     
-    public void comprarCripto(double valor, String moeda) {
+    public void comprarCripto(double valor, String moeda, ComprarCriptoMoedas comprarCripto) {
         double montante;
+        double saldoFuturo;
+        Boolean error = false;
         if (moeda.equals("Bitcoin")) {
-            montante = valor / bitcoin.getCotacao();
-            saldoBitcoin += montante;
+            saldoFuturo = saldoReal - valor * bitcoin.getTaxaCompra();
+            if (saldoFuturo >= 0) {
+                setSaldoReal(saldoFuturo);
+                montante = valor / bitcoin.getCotacao();
+                saldoBitcoin += montante;
+            } else {
+                error = true;
+            }
         } else if (moeda.equals("Ethereum")) {
-            montante = valor / ethereum.getCotacao();
-            saldoEthereum += montante;
+            saldoFuturo = saldoReal - valor * ethereum.getTaxaCompra();
+            if (saldoFuturo >= 0) {
+                setSaldoReal(saldoFuturo);
+                montante = valor / bitcoin.getCotacao();
+                saldoEthereum += montante;
+            } else {
+                error = true;
+            }
         } else if (moeda.equals("Ripple")) {
-            montante = valor / ripple.getCotacao();
-            saldoRipple += montante;
+            saldoFuturo = saldoReal - valor * ripple.getTaxaCompra();
+            if (saldoFuturo >= 0) {
+                setSaldoReal(saldoFuturo);
+                montante = valor / bitcoin.getCotacao();
+                saldoRipple += montante;
+            } else {
+                error = true;
+            }
+        }
+        if (error) {
+            JOptionPane.showMessageDialog(comprarCripto, "Saldo não pode ficar negativo");
+        }
+    }
+    
+    public void venderCripto(double valor, String moeda, VenderCriptoMoedas venderCripto) {
+        double montante;
+        double saldoFuturo;
+        Boolean error = false;
+        if (moeda.equals("Bitcoin")) {
+            saldoFuturo = saldoBitcoin - valor * bitcoin.getTaxaVenda();
+            if (saldoFuturo >= 0) {
+                saldoBitcoin -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
+                montante = saldoFuturo * bitcoin.getCotacao();
+                saldoReal += montante;
+            } else {
+                error = true;
+            }
+        } else if (moeda.equals("Ethereum")) {
+            saldoFuturo = saldoEthereum - valor * ethereum.getTaxaVenda();
+            if (saldoFuturo >= 0) {
+                saldoEthereum -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
+                montante = saldoFuturo * ethereum.getCotacao();
+                saldoReal += montante;
+            } else {
+                error = true;
+            }
+        } else if (moeda.equals("Ripple")) {
+            saldoFuturo = saldoRipple - valor * ripple.getTaxaVenda();
+            if (saldoFuturo >= 0) {
+                saldoRipple -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
+                montante = saldoFuturo * ripple.getCotacao();
+                saldoReal += montante;
+            } else {
+                error = true;
+            }
+        }
+        if (error) {
+            JOptionPane.showMessageDialog(venderCripto, "Saldo não pode ficar negativo");
         }
     }
 }
