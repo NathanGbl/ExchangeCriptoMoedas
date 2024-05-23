@@ -4,9 +4,11 @@
  */
 package Model;
 
+import View.ComprarCriptoMoedas;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import View.SacarReais;
+import View.VenderCriptoMoedas;
 import javax.swing.JOptionPane;
 
 /**
@@ -155,7 +157,7 @@ public class Carteira{
     public void venderCripto(double valor, String moeda, VenderCriptoMoedas venderCripto) {
         double montante;
         double saldoFuturo;
-        Boolean error = false;
+        Boolean saldoNegativo = false;
         if (moeda.equals("Bitcoin")) {
             saldoFuturo = saldoBitcoin - valor * bitcoin.getTaxaVenda();
             if (saldoFuturo >= 0) {
@@ -164,7 +166,7 @@ public class Carteira{
                 montante = saldoFuturo * bitcoin.getCotacao();
                 saldoReal += montante;
             } else {
-                error = true;
+                saldoNegativo = true;
             }
         } else if (moeda.equals("Ethereum")) {
             saldoFuturo = saldoEthereum - valor * ethereum.getTaxaVenda();
@@ -174,7 +176,7 @@ public class Carteira{
                 montante = saldoFuturo * ethereum.getCotacao();
                 saldoReal += montante;
             } else {
-                error = true;
+                saldoNegativo = true;
             }
         } else if (moeda.equals("Ripple")) {
             saldoFuturo = saldoRipple - valor * ripple.getTaxaVenda();
@@ -184,10 +186,10 @@ public class Carteira{
                 montante = saldoFuturo * ripple.getCotacao();
                 saldoReal += montante;
             } else {
-                error = true;
+                saldoNegativo = true;
             }
         }
-        if (error) {
+        if (saldoNegativo) {
             JOptionPane.showMessageDialog(venderCripto, "Saldo não pode ficar negativo");
         }
     }
