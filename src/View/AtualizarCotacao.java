@@ -134,7 +134,7 @@ public class AtualizarCotacao extends javax.swing.JFrame {
      */
     public AtualizarCotacao() {
         initComponents();
-        control = new ControllerCotacao(this);
+        control = Controller.getControl();
     }
 
     /**
@@ -335,7 +335,7 @@ public class AtualizarCotacao extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerCotacao control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizaBtn;
     private javax.swing.JRadioButton bitcoinBtn;

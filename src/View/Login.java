@@ -68,7 +68,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-//        control = new ControllerLogin(this);
+        control = Controller.getControl();
     }
 
     /**
@@ -153,7 +153,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        control.loginAluno();
+        String cpf = this.getTxtCpf().getText();
+        int senha = Integer.parseInt(this.getTxtSenha().getText());
+        control.loginAluno(cpf, senha), this);
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
@@ -191,7 +193,7 @@ public class Login extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerLogin control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCpf;
     private javax.swing.JLabel lblSenha;

@@ -69,7 +69,7 @@ public class ConsultarSaldo extends javax.swing.JFrame {
      */
     public ConsultarSaldo() {
         initComponents();
-        control = new ControllerConsultarSaldo();
+        control = Controller.getControl();
     }
 
     /**
@@ -104,6 +104,11 @@ public class ConsultarSaldo extends javax.swing.JFrame {
         jScrollPane1.setViewportView(consultaSaldo);
 
         consultaBtn.setText("Consultar");
+        consultaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaBtnActionPerformed(evt);
+            }
+        });
 
         voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
         voltarBtn.setBorder(null);
@@ -164,6 +169,11 @@ public class ConsultarSaldo extends javax.swing.JFrame {
         menu.setVisible(true);
     }//GEN-LAST:event_voltarBtnActionPerformed
 
+    private void consultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBtnActionPerformed
+        int senha = Integer.parseInt(this.getTxtSenha().getText());
+        control.consultarSaldo(this, senha);
+    }//GEN-LAST:event_consultaBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -199,7 +209,7 @@ public class ConsultarSaldo extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerConsultarSaldo control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultaBtn;
     private javax.swing.JTextArea consultaSaldo;

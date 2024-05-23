@@ -69,7 +69,7 @@ public class SacarReais extends javax.swing.JFrame {
      */
     public SacarReais() {
         initComponents();
-        control = new ControllerSacarReais();
+        control = Controller.getControl();
     }
 
     /**
@@ -197,7 +197,7 @@ public class SacarReais extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerSacarReais control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea consultaSaldo;
     private javax.swing.JScrollPane jScrollPane1;

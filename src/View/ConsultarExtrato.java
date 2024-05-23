@@ -69,7 +69,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
      */
     public ConsultarExtrato() {
         initComponents();
-        control = new ControllerConsultarExtrato();
+        control = Controller.getControl();
     }
 
     /**
@@ -203,7 +203,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerConsultarExtrato control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultaBtn;
     private javax.swing.JTextArea consultaExtrato;

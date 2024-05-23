@@ -190,7 +190,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
      */
     public ComprarCriptoMoedas() {
         initComponents();
-        control = new ControllerComprarCripto();
+        control = Controller.getControl();
     }
 
     /**
@@ -435,7 +435,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
 //        });
 //    }
 
-    private ControllerComprarCripto control;
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bitcoinBtn;
     private javax.swing.ButtonGroup buttons;
