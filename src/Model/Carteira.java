@@ -98,7 +98,7 @@ public class Carteira{
     
     public String getDataNow() {
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         String dataHoraAtual = now.format(forma);
         return dataHoraAtual;
     }
@@ -120,7 +120,7 @@ public class Carteira{
     public void comprarCripto(double valor, String moeda, ComprarCriptoMoedas comprarCripto) {
         double montante;
         double saldoFuturo;
-        Boolean error = false;
+        Boolean saldoNegativo = false;
         if (moeda.equals("Bitcoin")) {
             saldoFuturo = saldoReal - valor * bitcoin.getTaxaCompra();
             if (saldoFuturo >= 0) {
@@ -128,7 +128,7 @@ public class Carteira{
                 montante = valor / bitcoin.getCotacao();
                 saldoBitcoin += montante;
             } else {
-                error = true;
+                saldoNegativo = true;
             }
         } else if (moeda.equals("Ethereum")) {
             saldoFuturo = saldoReal - valor * ethereum.getTaxaCompra();
@@ -137,7 +137,7 @@ public class Carteira{
                 montante = valor / bitcoin.getCotacao();
                 saldoEthereum += montante;
             } else {
-                error = true;
+                saldoNegativo = true;
             }
         } else if (moeda.equals("Ripple")) {
             saldoFuturo = saldoReal - valor * ripple.getTaxaCompra();
@@ -146,10 +146,10 @@ public class Carteira{
                 montante = valor / bitcoin.getCotacao();
                 saldoRipple += montante;
             } else {
-                error = true;
+                saldoNegativo = true;
             }
         }
-        if (error) {
+        if (saldoNegativo) {
             JOptionPane.showMessageDialog(comprarCripto, "Saldo não pode ficar negativo");
         }
     }
