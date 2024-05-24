@@ -4,6 +4,13 @@
  */
 package Model;
 
+import View.ComprarCriptoMoedas;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import View.SacarReais;
+import View.VenderCriptoMoedas;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Nathan Gabriel
@@ -89,5 +96,101 @@ public class Carteira{
         this.ripple = ripple;
     }
     
+    public String getDataNow() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        String dataHoraAtual = now.format(forma);
+        return dataHoraAtual;
+    }
     
+    public void deposito(double valor) {
+        double montante = getSaldoReal() + valor;
+        setSaldoReal(montante);
+    }
+    
+    public void saque(double valor, SacarReais sacarReais) {
+        double montante = getSaldoReal() - valor;
+        if (montante < 0) {
+            JOptionPane.showMessageDialog(sacarReais, "Saldo não pode ficar negativo");
+        } else {
+            setSaldoReal(montante);
+        }
+    }
+    
+    public void comprarCripto(double valor, String moeda, ComprarCriptoMoedas comprarCripto) {
+        double montante;
+        double saldoFuturo;
+        Boolean saldoNegativo = false;
+        if (moeda.equals("Bitcoin")) {
+            saldoFuturo = saldoReal - valor * bitcoin.getTaxaCompra();
+            if (saldoFuturo >= 0) {
+                setSaldoReal(saldoFuturo);
+                montante = valor / bitcoin.getCotacao();
+                saldoBitcoin += montante;
+            } else {
+                saldoNegativo = true;
+            }
+        } else if (moeda.equals("Ethereum")) {
+            saldoFuturo = saldoReal - valor * ethereum.getTaxaCompra();
+            if (saldoFuturo >= 0) {
+                setSaldoReal(saldoFuturo);
+                montante = valor / bitcoin.getCotacao();
+                saldoEthereum += montante;
+            } else {
+                saldoNegativo = true;
+            }
+        } else if (moeda.equals("Ripple")) {
+            saldoFuturo = saldoReal - valor * ripple.getTaxaCompra();
+            if (saldoFuturo >= 0) {
+                setSaldoReal(saldoFuturo);
+                montante = valor / bitcoin.getCotacao();
+                saldoRipple += montante;
+            } else {
+                saldoNegativo = true;
+            }
+        }
+        if (saldoNegativo) {
+            JOptionPane.showMessageDialog(comprarCripto, "Saldo não pode ficar negativo");
+        }
+    }
+    
+    public void venderCripto(double valor, String moeda, VenderCriptoMoedas venderCripto) {
+        double montante;
+        double saldoFuturo;
+        Boolean saldoNegativo = false;
+        if (moeda.equals("Bitcoin")) {
+            saldoFuturo = saldoBitcoin - valor * bitcoin.getTaxaVenda();
+            if (saldoFuturo >= 0) {
+                saldoBitcoin -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
+                montante = saldoFuturo * bitcoin.getCotacao();
+                saldoReal += montante;
+            } else {
+                saldoNegativo = true;
+            }
+        } else if (moeda.equals("Ethereum")) {
+            saldoFuturo = saldoEthereum - valor * ethereum.getTaxaVenda();
+            if (saldoFuturo >= 0) {
+                saldoEthereum -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
+                montante = saldoFuturo * ethereum.getCotacao();
+                saldoReal += montante;
+            } else {
+                saldoNegativo = true;
+            }
+        } else if (moeda.equals("Ripple")) {
+            saldoFuturo = saldoRipple - valor * ripple.getTaxaVenda();
+            if (saldoFuturo >= 0) {
+                saldoRipple -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
+                montante = saldoFuturo * ripple.getCotacao();
+                saldoReal += montante;
+            } else {
+                saldoNegativo = true;
+            }
+        }
+        if (saldoNegativo) {
+            JOptionPane.showMessageDialog(venderCripto, "Saldo não pode ficar negativo");
+        }
+    }
 }

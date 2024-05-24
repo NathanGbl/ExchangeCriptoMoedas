@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -69,6 +70,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
      */
     public ConsultarExtrato() {
         initComponents();
+        control = Controller.getControl();
     }
 
     /**
@@ -202,6 +204,7 @@ public class ConsultarExtrato extends javax.swing.JFrame {
 //        });
 //    }
 
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultaBtn;
     private javax.swing.JTextArea consultaExtrato;

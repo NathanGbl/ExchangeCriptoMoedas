@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.Controller;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -190,6 +191,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
      */
     public ComprarCriptoMoedas() {
         initComponents();
+        control = Controller.getControl();
     }
 
     /**
@@ -434,6 +436,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
 //        });
 //    }
 
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bitcoinBtn;
     private javax.swing.ButtonGroup buttons;

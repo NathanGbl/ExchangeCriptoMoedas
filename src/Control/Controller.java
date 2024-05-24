@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import View.Menu;
 import View.SacarReais;
 import View.VenderCriptoMoedas;
+import java.text.ParseException;
 
 /**
  *
@@ -49,23 +50,36 @@ public class Controller {
     public void loginInvestidor(String cpf, int senha, Login login) {
         Conexao conexao = new Conexao();
         try {
-//            System.out.println("Foi0");
+            double saldoReal;
+            double saldoBitcoin;
+            double saldoEthereum;
+            double saldoRipple;
             Connection conn = conexao.getConnection();
-//            System.out.println("Foi1");
-            InvestidoresDAO dao = new InvestidoresDAO(conn);
-//            System.out.println("Foi-1");
-            ResultSet res = dao.consultar(cpf, senha);
-//            System.out.println("Foi2");
+            InvestidoresDAO daoInvestidores = new InvestidoresDAO(conn);
+            TransacoesDAO daoTransacoes = new TransacoesDAO(conn);
+            ResultSet res = daoInvestidores.consultar(cpf, senha);
+            ResultSet resTransacoes = daoTransacoes.consultar(senha);
             if (res.next()) {
-//                System.out.println("Foi3");
                 String nome = res.getString("nome");
                 cpf = res.getString("cpf");
                 senha = res.getInt("senha");
-                investidor = new Investidor(nome, cpf, senha);
+                if (resTransacoes.next()) {
+                    saldoReal = resTransacoes.getDouble("saldoReal");
+                    saldoBitcoin = resTransacoes.getDouble("saldoBitcoin");
+                    saldoEthereum = resTransacoes.getDouble("saldoEthereum");
+                    saldoRipple = resTransacoes.getDouble("saldoRipple");
+                } else {
+                    saldoReal = 0;
+                    saldoBitcoin = 0;
+                    saldoEthereum = 0;
+                    saldoRipple = 0;
+                }
+                investidor = new Investidor(nome, cpf, senha, saldoReal, 
+                saldoBitcoin, saldoEthereum, saldoRipple);
                 JOptionPane.showMessageDialog(login, "Login feito!");
                 Menu menu = new Menu();
                 menu.setVisible(true);
-                login.setVisible(false);
+                login.dispose();
             } else {
                 JOptionPane.showMessageDialog(login, "Login não efetuado!");
             }
@@ -135,174 +149,168 @@ public class Controller {
         }
     }
     
-    public void depositar(DepositarReais depositarReais, double deposito) {
+    public void depositar(DepositarReais depositarReais, 
+                          String deposito) throws ParseException {
         Conexao conexao = new Conexao();
+        double valor = Double.parseDouble(deposito);
         try {
 //            System.out.println("Foi0");
             Connection conn = conexao.getConnection();
 //            System.out.println("Foi1");
             TransacoesDAO dao = new TransacoesDAO(conn);
 //            System.out.println("Foi-1");
-            ResultSet res = dao.consultarExtrato(senha);
-//            System.out.println("Foi2");
-            String info = "";
-            if (res.next()){
-                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
-                while (res.next()) {
-                info = "\n" + res.getString("data") + 
-                        " " + res.getString("operacao") + 
-                        " " + res.getString("moeda") + 
-                        " " + "CT: " + res.getDouble("cotacao") +
-                        " " + "Taxa: " + res.getDouble("taxa") +
-                        " " + "Real: " + res.getDouble("saldoReal") +
-                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
-                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
-                        " " + "Ripple: " + res.getDouble("saldoRipple");
-                consultarExtrato.getConsultaExtrato().append(info);
-                }
-            } else {
-                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
-            }
+            investidor.getCarteira().setSaldoReal(
+                    investidor.getCarteira().getSaldoReal() + valor);
+            String data = investidor.getCarteira().getDataNow();
+//            System.out.println("Foi3");
+            double[] cotacoes = {
+                investidor.getCarteira().getBitcoin().getCotacao(), 
+                investidor.getCarteira().getEthereum().getCotacao(), 
+                investidor.getCarteira().getRipple().getCotacao()};
+//            System.out.println("Foi4");
+            dao.inserir(investidor, data, "+", valor, "Real", cotacoes, 0.0);
+//            System.out.println("Foi5");
+            JOptionPane.showMessageDialog(depositarReais, 
+                                          "Depósito realizado com sucesso");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
+            System.out.println(e);
         }
     }
     
-    public void sacar(SacarReais sacarReais, double saque) {
-        Conexao conexao = new Conexao();
-        try {
-//            System.out.println("Foi0");
-            Connection conn = conexao.getConnection();
-//            System.out.println("Foi1");
-            TransacoesDAO dao = new TransacoesDAO(conn);
-//            System.out.println("Foi-1");
-            ResultSet res = dao.consultarExtrato(senha);
-//            System.out.println("Foi2");
-            String info = "";
-            if (res.next()){
-                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
-                while (res.next()) {
-                info = "\n" + res.getString("data") + 
-                        " " + res.getString("operacao") + 
-                        " " + res.getString("moeda") + 
-                        " " + "CT: " + res.getDouble("cotacao") +
-                        " " + "Taxa: " + res.getDouble("taxa") +
-                        " " + "Real: " + res.getDouble("saldoReal") +
-                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
-                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
-                        " " + "Ripple: " + res.getDouble("saldoRipple");
-                consultarExtrato.getConsultaExtrato().append(info);
-                }
-            } else {
-                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
-        }
-    }
-    
-    public void comprarCripto(ComprarCriptoMoedas comprarCripto, double compra) {
-        Conexao conexao = new Conexao();
-        try {
-//            System.out.println("Foi0");
-            Connection conn = conexao.getConnection();
-//            System.out.println("Foi1");
-            TransacoesDAO dao = new TransacoesDAO(conn);
-//            System.out.println("Foi-1");
-            ResultSet res = dao.consultarExtrato(senha);
-//            System.out.println("Foi2");
-            String info = "";
-            if (res.next()){
-                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
-                while (res.next()) {
-                info = "\n" + res.getString("data") + 
-                        " " + res.getString("operacao") + 
-                        " " + res.getString("moeda") + 
-                        " " + "CT: " + res.getDouble("cotacao") +
-                        " " + "Taxa: " + res.getDouble("taxa") +
-                        " " + "Real: " + res.getDouble("saldoReal") +
-                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
-                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
-                        " " + "Ripple: " + res.getDouble("saldoRipple");
-                consultarExtrato.getConsultaExtrato().append(info);
-                }
-            } else {
-                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
-        }
-    }
-    
-    public void venderCripto(VenderCriptoMoedas venderCripto, double venda) {
-        Conexao conexao = new Conexao();
-        try {
-//            System.out.println("Foi0");
-            Connection conn = conexao.getConnection();
-//            System.out.println("Foi1");
-            TransacoesDAO dao = new TransacoesDAO(conn);
-//            System.out.println("Foi-1");
-            ResultSet res = dao.consultarExtrato(senha);
-//            System.out.println("Foi2");
-            String info = "";
-            if (res.next()){
-                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
-                while (res.next()) {
-                info = "\n" + res.getString("data") + 
-                        " " + res.getString("operacao") + 
-                        " " + res.getString("moeda") + 
-                        " " + "CT: " + res.getDouble("cotacao") +
-                        " " + "Taxa: " + res.getDouble("taxa") +
-                        " " + "Real: " + res.getDouble("saldoReal") +
-                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
-                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
-                        " " + "Ripple: " + res.getDouble("saldoRipple");
-                consultarExtrato.getConsultaExtrato().append(info);
-                }
-            } else {
-                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
-        }
-    }
-    
-    public void atualizarCotacao(AtualizarCotacao atualizarCot, double novaCot, 
-            String moeda) {
-        Conexao conexao = new Conexao();
-        try {
-//            System.out.println("Foi0");
-            Connection conn = conexao.getConnection();
-//            System.out.println("Foi1");
-            TransacoesDAO dao = new TransacoesDAO(conn);
-//            System.out.println("Foi-1");
-            ResultSet res = dao.consultarExtrato(senha);
-//            System.out.println("Foi2");
-            String info = "";
-            if (res.next()){
-                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
-                while (res.next()) {
-                info = "\n" + res.getString("data") + 
-                        " " + res.getString("operacao") + 
-                        " " + res.getString("moeda") + 
-                        " " + "CT: " + res.getDouble("cotacao") +
-                        " " + "Taxa: " + res.getDouble("taxa") +
-                        " " + "Real: " + res.getDouble("saldoReal") +
-                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
-                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
-                        " " + "Ripple: " + res.getDouble("saldoRipple");
-                consultarExtrato.getConsultaExtrato().append(info);
-                }
-            } else {
-                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
-        }
-    }
+//    public void sacar(SacarReais sacarReais, double saque) {
+//        Conexao conexao = new Conexao();
+//        try {
+////            System.out.println("Foi0");
+//            Connection conn = conexao.getConnection();
+////            System.out.println("Foi1");
+//            TransacoesDAO dao = new TransacoesDAO(conn);
+////            System.out.println("Foi-1");
+//            ResultSet res = dao.consultarExtrato(senha);
+////            System.out.println("Foi2");
+//            String info = "";
+//            if (res.next()){
+//                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                while (res.next()) {
+//                info = "\n" + res.getString("data") + 
+//                        " " + res.getString("operacao") + 
+//                        " " + res.getString("moeda") + 
+//                        " " + "CT: " + res.getDouble("cotacao") +
+//                        " " + "Taxa: " + res.getDouble("taxa") +
+//                        " " + "Real: " + res.getDouble("saldoReal") +
+//                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
+//                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
+//                        " " + "Ripple: " + res.getDouble("saldoRipple");
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
+//        }
+//    }
+//    
+//    public void comprarCripto(ComprarCriptoMoedas comprarCripto, double compra) {
+//        Conexao conexao = new Conexao();
+//        try {
+////            System.out.println("Foi0");
+//            Connection conn = conexao.getConnection();
+////            System.out.println("Foi1");
+//            TransacoesDAO dao = new TransacoesDAO(conn);
+////            System.out.println("Foi-1");
+//            ResultSet res = dao.consultarExtrato(senha);
+////            System.out.println("Foi2");
+//            String info = "";
+//            if (res.next()){
+//                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                while (res.next()) {
+//                info = "\n" + res.getString("data") + 
+//                        " " + res.getString("operacao") + 
+//                        " " + res.getString("moeda") + 
+//                        " " + "CT: " + res.getDouble("cotacao") +
+//                        " " + "Taxa: " + res.getDouble("taxa") +
+//                        " " + "Real: " + res.getDouble("saldoReal") +
+//                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
+//                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
+//                        " " + "Ripple: " + res.getDouble("saldoRipple");
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
+//        }
+//    }
+//    
+//    public void venderCripto(VenderCriptoMoedas venderCripto, double venda) {
+//        Conexao conexao = new Conexao();
+//        try {
+////            System.out.println("Foi0");
+//            Connection conn = conexao.getConnection();
+////            System.out.println("Foi1");
+//            TransacoesDAO dao = new TransacoesDAO(conn);
+////            System.out.println("Foi-1");
+//            ResultSet res = dao.consultarExtrato(senha);
+////            System.out.println("Foi2");
+//            String info = "";
+//            if (res.next()){
+//                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                while (res.next()) {
+//                info = "\n" + res.getString("data") + 
+//                        " " + res.getString("operacao") + 
+//                        " " + res.getString("moeda") + 
+//                        " " + "CT: " + res.getDouble("cotacao") +
+//                        " " + "Taxa: " + res.getDouble("taxa") +
+//                        " " + "Real: " + res.getDouble("saldoReal") +
+//                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
+//                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
+//                        " " + "Ripple: " + res.getDouble("saldoRipple");
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
+//        }
+//    }
+//    
+//    public void atualizarCotacao(AtualizarCotacao atualizarCot, double novaCot, 
+//            String moeda) {
+//        Conexao conexao = new Conexao();
+//        try {
+////            System.out.println("Foi0");
+//            Connection conn = conexao.getConnection();
+////            System.out.println("Foi1");
+//            TransacoesDAO dao = new TransacoesDAO(conn);
+////            System.out.println("Foi-1");
+//            ResultSet res = dao.consultarExtrato(senha);
+////            System.out.println("Foi2");
+//            String info = "";
+//            if (res.next()){
+//                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                while (res.next()) {
+//                info = "\n" + res.getString("data") + 
+//                        " " + res.getString("operacao") + 
+//                        " " + res.getString("moeda") + 
+//                        " " + "CT: " + res.getDouble("cotacao") +
+//                        " " + "Taxa: " + res.getDouble("taxa") +
+//                        " " + "Real: " + res.getDouble("saldoReal") +
+//                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
+//                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
+//                        " " + "Ripple: " + res.getDouble("saldoRipple");
+//                consultarExtrato.getConsultaExtrato().append(info);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
+//            }
+//        } catch (SQLException e) {
+//            JOptionPane.showMessageDialog(consultarExtrato, "Erro de conexão!");
+//        }
+//    }
 }

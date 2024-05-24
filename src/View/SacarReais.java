@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -69,6 +70,7 @@ public class SacarReais extends javax.swing.JFrame {
      */
     public SacarReais() {
         initComponents();
+        control = Controller.getControl();
     }
 
     /**
@@ -196,6 +198,7 @@ public class SacarReais extends javax.swing.JFrame {
 //        });
 //    }
 
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea consultaSaldo;
     private javax.swing.JScrollPane jScrollPane1;

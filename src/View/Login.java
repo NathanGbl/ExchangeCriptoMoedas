@@ -68,21 +68,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        ConsultarSaldo consultSaldo = new ConsultarSaldo();
-        ConsultarExtrato consultarExtrato = new ConsultarExtrato();
-        DepositarReais depositarReais = new DepositarReais();
-        SacarReais sacarReais = new SacarReais();
-        ComprarCriptoMoedas comprarCripto = new ComprarCriptoMoedas();
-        VenderCriptoMoedas venderCripto = new VenderCriptoMoedas();
-        AtualizarCotacao atualizarCotacao = new AtualizarCotacao();
-        control = new Controller(this, 
-                                 consultSaldo, 
-                                 consultarExtrato, 
-                                 depositarReais, 
-                                 sacarReais, 
-                                 comprarCripto, 
-                                 venderCripto, 
-                                 atualizarCotacao);
+        control = Controller.getControl();
     }
 
     /**
@@ -167,7 +153,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        control.loginAluno();
+        String cpf = this.getTxtCpf().getText();
+        int senha = Integer.parseInt(this.getTxtSenha().getText());
+        control.loginInvestidor(cpf, senha, this);
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
