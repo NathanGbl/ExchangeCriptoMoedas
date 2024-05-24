@@ -4,7 +4,7 @@
  */
 package View;
 
-import Control.ControllerLogin;
+import Control.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;

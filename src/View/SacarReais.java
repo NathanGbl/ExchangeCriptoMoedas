@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;

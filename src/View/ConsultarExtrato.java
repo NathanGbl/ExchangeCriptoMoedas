@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.Controller;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -101,6 +102,11 @@ public class ConsultarExtrato extends javax.swing.JFrame {
         jScrollPane1.setViewportView(consultaExtrato);
 
         consultaBtn.setText("Consultar");
+        consultaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaBtnActionPerformed(evt);
+            }
+        });
 
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setText("Consultar Extrato");
@@ -166,7 +172,12 @@ public class ConsultarExtrato extends javax.swing.JFrame {
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
         Menu menu = new Menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
+
+    private void consultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBtnActionPerformed
+        control.consultarExtrato(this, int senha);
+    }//GEN-LAST:event_consultaBtnActionPerformed
 
     /**
      * @param args the command line arguments
