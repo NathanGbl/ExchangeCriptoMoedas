@@ -176,7 +176,8 @@ public class ConsultarExtrato extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarBtnActionPerformed
 
     private void consultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBtnActionPerformed
-        control.consultarExtrato(this, int senha);
+        int senha = Integer.parseInt(this.getTxtSenha().getText());
+        control.consultarExtrato(this, senha);
     }//GEN-LAST:event_consultaBtnActionPerformed
 
     /**
