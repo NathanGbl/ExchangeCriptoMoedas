@@ -126,22 +126,21 @@ public class Controller {
             ResultSet res = dao.consultarExtrato(senha);
 //            System.out.println("Foi2");
             String info = "";
-            if (res.next()){
-                info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
-                while (res.next()) {
-                info = "\n" + res.getString("data") + 
-                        " " + res.getString("operacao") + 
-                        " " + res.getString("moeda") + 
-                        " " + "CT: " + res.getDouble("cotacao") +
-                        " " + "Taxa: " + res.getDouble("taxa") +
-                        " " + "Real: " + res.getDouble("saldoReal") +
-                        " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
-                        " " + "Ethereum: " + res.getDouble("saldoEthereum") +
-                        " " + "Ripple: " + res.getDouble("saldoRipple");
+            info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
+            consultarExtrato.getConsultaExtrato().setText(info);
+            while (res.next()) {
+            info = "\n" + res.getTimestamp("data") + 
+                   " " + res.getString("operacao") + 
+                   " " + res.getString("moeda") + 
+                   " " + "CT: " + res.getObject("cotacao") +
+                   " " + "Taxa: " + res.getDouble("taxa") +
+                   " " + "Real: " + res.getDouble("saldoReal") +
+                   " " + "Bitcoin: " + res.getDouble("saldoBitcoin") +
+                   " " + "Ethereum: " + res.getDouble("saldoEthereum") +
+                   " " + "Ripple: " + res.getDouble("saldoRipple");
                 consultarExtrato.getConsultaExtrato().append(info);
                 }
-            } else {
+            if (!res.next()) {
                 JOptionPane.showMessageDialog(consultarExtrato, "senha incorreta");
             }
         } catch (SQLException e) {

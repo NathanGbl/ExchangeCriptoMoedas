@@ -5,12 +5,8 @@
 package View;
 
 import Control.Controller;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -109,11 +105,6 @@ public class DepositarReais extends javax.swing.JFrame {
         jScrollPane1.setViewportView(consultaSaldo);
 
         depositaBtn.setText("Depositar");
-        depositaBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                depositaBtnActionPerformed(evt);
-            }
-        });
 
         voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
         voltarBtn.setBorder(null);
@@ -174,14 +165,6 @@ public class DepositarReais extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
-
-    private void depositaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositaBtnActionPerformed
-        try {
-            control.depositar(this, this.getTxtDeposito().getText());
-        } catch (ParseException ex) {
-            System.out.println(ex);
-        }
-    }//GEN-LAST:event_depositaBtnActionPerformed
 
     /**
      * @param args the command line arguments

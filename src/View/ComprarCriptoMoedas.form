@@ -33,7 +33,7 @@
                       <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
                       <Component id="lblSaque" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtSaque" min="-2" pref="96" max="-2" attributes="0"/>
+                      <Component id="txtCompra" min="-2" pref="96" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="txtSaque" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCompra" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSaque" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -95,7 +95,7 @@
         <Property name="text" type="java.lang.String" value="Compra:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSaque">
+    <Component class="javax.swing.JTextField" name="txtCompra">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
@@ -106,6 +106,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Investir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="investeBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="titulo">
       <Properties>

@@ -178,12 +178,12 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
         this.titulo = titulo;
     }
 
-    public JTextField getTxtSaque() {
-        return txtSaque;
+    public JTextField getTxtCompra() {
+        return txtCompra;
     }
 
-    public void setTxtSaque(JTextField txtSaque) {
-        this.txtSaque = txtSaque;
+    public void setTxtCompra(JTextField txtCompra) {
+        this.txtCompra = txtCompra;
     }
 
     /**
@@ -205,7 +205,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
 
         buttons = new javax.swing.ButtonGroup();
         lblSaque = new javax.swing.JLabel();
-        txtSaque = new javax.swing.JTextField();
+        txtCompra = new javax.swing.JTextField();
         investeBtn = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -231,9 +231,14 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
         lblSaque.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblSaque.setText("Compra:");
 
-        txtSaque.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtCompra.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         investeBtn.setText("Investir");
+        investeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                investeBtnActionPerformed(evt);
+            }
+        });
 
         titulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo.setText("Comprar Criptomoedas");
@@ -355,7 +360,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
                         .addGap(224, 224, 224)
                         .addComponent(lblSaque)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSaque, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,7 +389,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
                         .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSaque))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,7 +404,13 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
         Menu menu = new Menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
+
+    private void investeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_investeBtnActionPerformed
+//        Double compra = Double.parseDouble(this.getTxtCompra().getText());
+//        control.comprarCripto(this, compra);
+    }//GEN-LAST:event_investeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,7 +469,7 @@ public class ComprarCriptoMoedas extends javax.swing.JFrame {
     private javax.swing.JLabel lblSaque;
     private javax.swing.JRadioButton rippleBtn;
     private javax.swing.JLabel titulo;
-    private javax.swing.JTextField txtSaque;
+    private javax.swing.JTextField txtCompra;
     private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
 }

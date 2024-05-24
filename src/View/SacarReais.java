@@ -105,6 +105,11 @@ public class SacarReais extends javax.swing.JFrame {
         jScrollPane1.setViewportView(consultaSaldo);
 
         sacaBtn.setText("Sacar");
+        sacaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sacaBtnActionPerformed(evt);
+            }
+        });
 
         voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
         voltarBtn.setBorder(null);
@@ -161,7 +166,13 @@ public class SacarReais extends javax.swing.JFrame {
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
         Menu menu = new Menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
+
+    private void sacaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacaBtnActionPerformed
+//        Double saque = Double.parseDouble(this.getTxtSaque().getText());
+//        control.sacar(this, saque);
+    }//GEN-LAST:event_sacaBtnActionPerformed
 
     /**
      * @param args the command line arguments
