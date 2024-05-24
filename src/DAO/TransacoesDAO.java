@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import Model.Moedas;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -32,21 +35,29 @@ public class TransacoesDAO {
         stringB.append("}");
         return stringB.toString();
     }
+    
+    public Timestamp stringToTimeStamp(String data) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        Date dataDate = formatter.parse(data);
+        Timestamp dataTimestamp = new Timestamp(dataDate.getTime());
+        return dataTimestamp;
+    }
     public void inserir (Investidor investidor, 
-                         Timestamp data, 
+                         String data, 
                          String operacao, 
                          double valor, 
                          String moeda, 
                          double[] cotacao, 
-                         double taxa) throws SQLException {
+                         double taxa) throws SQLException, ParseException {
         String sql = "insert into transacoes (senha, data, operacao, valor, "
                 + "moeda, cotacao, taxa, saldoreal, saldoBitcoin, "
                 + "saldoEthereum, saldoRipple)	"
                 + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         String insertCotacao = doubleToString(cotacao);
+        Timestamp insertData = stringToTimeStamp(data);
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setInt(1, investidor.getSenha());
-        statement.setTimestamp(2, data);
+        statement.setTimestamp(2, insertData);
         statement.setString(3, operacao);
         statement.setDouble(4, valor);
         statement.setString(5, moeda);
@@ -80,8 +91,7 @@ public class TransacoesDAO {
 //                     + aluno.getUsuario() + "'and senha = '"
 //                     + aluno.getSenha() + "'";
 
-        String sql = "select * from transacoes where senha = ? "
-                + "order by senha desc limit 1";
+        String sql = "select * from transacoes where senha = ? order by data desc limit 1";
 
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setInt(1, senha);
