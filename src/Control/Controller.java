@@ -82,7 +82,7 @@ public class Controller {
             System.out.println("Foi1");
             TransacoesDAO dao = new TransacoesDAO(conn);
             System.out.println("Foi-1");
-            ResultSet res = dao.consultar(senha, "");
+            ResultSet res = dao.consultar(senha);
             System.out.println("Foi2");
             if (res.next()) {
               System.out.println("Foi3");
@@ -143,12 +143,12 @@ public class Controller {
 //            System.out.println("Foi1");
             TransacoesDAO dao = new TransacoesDAO(conn);
 //            System.out.println("Foi-1");
-            ResultSet res = dao.consultarExtrato(senha);
+            ResultSet res = dao.inserir(investidor, investidor.getCarteira().get);
 //            System.out.println("Foi2");
             String info = "";
             if (res.next()){
                 info = investidor.getNome() + "\nCPF: " + investidor.getCpf();
-                consultarExtrato.getConsultaExtrato().append(info);
+                depositarReais.getTxtDeposito().append(info);
                 while (res.next()) {
                 info = "\n" + res.getString("data") + 
                         " " + res.getString("operacao") + 
