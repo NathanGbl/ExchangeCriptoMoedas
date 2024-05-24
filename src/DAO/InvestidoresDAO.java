@@ -30,7 +30,7 @@ public class InvestidoresDAO {
         statement.execute();
         ResultSet resultado = statement.getResultSet();
     }
-    public ResultSet consultar (String cpf, int senha) throws SQLException {
+    public ResultSet consultar (Investidor investidor) throws SQLException {
 
 //        String sql = "select * from aluno where usuário = '"
 //                     + aluno.getUsuario() + "'and senha = '"
@@ -39,8 +39,8 @@ public class InvestidoresDAO {
         String sql = "select * from investidores where cpf = ? and senha = ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setString(1, cpf);
-        statement.setInt(2, senha);
+        statement.setString(1, investidor.getCpf());
+        statement.setInt(2, investidor.getSenha());
         statement.execute();
         ResultSet resultado = statement.getResultSet();
        
