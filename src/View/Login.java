@@ -155,7 +155,7 @@ public class Login extends javax.swing.JFrame {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String cpf = this.getTxtCpf().getText();
         int senha = Integer.parseInt(this.getTxtSenha().getText());
-        control.loginAluno(cpf, senha), this);
+        control.loginInvestidor(cpf, senha, this);
     }//GEN-LAST:event_loginBtnActionPerformed
 
     /**

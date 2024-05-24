@@ -350,12 +350,14 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void venderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderBtnActionPerformed
-        // TODO add your handling code here:
+        Double venda = Double.parseDouble(this.getTxtVenda().getText());
+        control.comprarCripto(this, venda);// TODO add your handling code here:
     }//GEN-LAST:event_venderBtnActionPerformed
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
        Menu menu = new Menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**

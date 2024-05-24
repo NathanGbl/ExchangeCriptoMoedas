@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import Control.Controller;
 
 /**
  *
@@ -292,12 +293,13 @@ public class AtualizarCotacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizaBtnActionPerformed
-        // TODO add your handling code here:
+        control.atualizarCotacao(this);
     }//GEN-LAST:event_atualizaBtnActionPerformed
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
         Menu menu = new Menu();
         menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
 
     /**
