@@ -4,9 +4,6 @@
  */
 package Model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  *
  * @author Nathan Gabriel
@@ -92,10 +89,5 @@ public class Carteira{
         this.ripple = ripple;
     }
     
-    public String getDataNow() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String dataHoraAtual = now.format(forma);
-        return dataHoraAtual;
-    }
+    
 }
