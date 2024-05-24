@@ -82,7 +82,7 @@ public class Controller {
             System.out.println("Foi1");
             TransacoesDAO dao = new TransacoesDAO(conn);
             System.out.println("Foi-1");
-            ResultSet res = dao.consultar(senha, "");
+            ResultSet res = dao.consultar(senha);
             System.out.println("Foi2");
             if (res.next()) {
               System.out.println("Foi3");
