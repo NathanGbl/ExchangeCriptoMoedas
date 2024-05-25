@@ -52,13 +52,13 @@ public class TransacoesDAO {
                          String moeda, 
                          double[] cotacao, 
                          double taxa) throws SQLException, ParseException {
-        String sql = "insert into transacoes (senha, data, operacao, valor, "
+        String sql = "insert into transacoes (cpf, data, operacao, valor, "
                 + "moeda, cotacao, taxa, saldoreal, saldobitcoin, "
                 + "saldoethereum, saldoripple) "
                 + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         Timestamp insertData = stringToTimeStamp(data);
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, investidor.getSenha());
+        statement.setString(1, investidor.getCpf());
         statement.setTimestamp(2, insertData);
         statement.setString(3, operacao);
         statement.setDouble(4, valor);
@@ -73,12 +73,12 @@ public class TransacoesDAO {
     }
     
     /* Seleciona todas as ocorrências da senha na tabela */
-    public ResultSet consultarExtrato (int senha) throws SQLException {
+    public ResultSet consultarExtrato (String cpf) throws SQLException {
 
-        String sql = "select * from transacoes where senha = ?";
+        String sql = "select * from transacoes where cpf = ?";
 
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, senha);
+        statement.setString(1, cpf);
         statement.execute();
         ResultSet resultado = statement.getResultSet();
        
@@ -86,13 +86,13 @@ public class TransacoesDAO {
     }
     
     /* Seleciona a última linha da tabela com base na data */
-    public ResultSet consultar (int senha) throws SQLException {
+    public ResultSet consultar (String cpf) throws SQLException {
 
-        String sql = "select * from transacoes where senha = ? "
+        String sql = "select * from transacoes where cpf = ? "
                 + "order by data desc limit 1";
 
         PreparedStatement statement = conn.prepareStatement(sql);
-        statement.setInt(1, senha);
+        statement.setString(1, cpf);
         statement.execute();
         ResultSet resultado = statement.getResultSet();
        

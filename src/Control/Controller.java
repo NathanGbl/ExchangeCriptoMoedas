@@ -72,20 +72,21 @@ public class Controller {
     // o contrutor é passado com os saldos que estiverem no banco de dados.
     public void loginInvestidor(String cpf, int senha, Login login) {
         Conexao conexao = new Conexao();
-        System.out.println("foi");
+//        System.out.println("foi");
         try {
-            System.out.println("foi");
+//            System.out.println("foi");
             double saldoReal;
             double saldoBitcoin;
             double saldoEthereum;
             double saldoRipple;
             Connection conn = conexao.getConnection();
-            System.out.println("foi");
+//            System.out.println("foi");
             if (verificaCpfSenha(cpf, senha)) {
                 InvestidoresDAO daoInvestidores = new InvestidoresDAO(conn);
                 TransacoesDAO daoTransacoes = new TransacoesDAO(conn);
+                System.out.println("foi");
                 ResultSet res = daoInvestidores.consultar(cpf, senha);
-                ResultSet resTransacoes = daoTransacoes.consultar(senha);
+                ResultSet resTransacoes = daoTransacoes.consultar(cpf);
                 if (res.next()) {
                     String nome = res.getString("nome");
                     cpf = res.getString("cpf");
@@ -114,7 +115,7 @@ public class Controller {
                 JOptionPane.showMessageDialog(login, "Senha e/ou cpf incorretos");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(login, "Erro de conexÃ£o!");
+            JOptionPane.showMessageDialog(login, e);
         }
     }
     
@@ -125,7 +126,7 @@ public class Controller {
             if (verificaCpfSenha(investidor.getCpf(), senha)) {
                 Connection conn = conexao.getConnection();
                 TransacoesDAO dao = new TransacoesDAO(conn);
-                ResultSet res = dao.consultar(senha);
+                ResultSet res = dao.consultar(investidor.getCpf());
                 if (res.next()) {
                   System.out.println("Foi3");
                     String info = String.format(
@@ -157,7 +158,7 @@ public class Controller {
             if (verificaCpfSenha(investidor.getCpf(), senha)) {
                 Connection conn = conexao.getConnection();
                 TransacoesDAO dao = new TransacoesDAO(conn);
-                ResultSet res = dao.consultarExtrato(senha);
+                ResultSet res = dao.consultarExtrato(investidor.getCpf());
                 String info = "";
                 consultarExtrato.getConsultaExtrato().setText(info);
                 int cont = 0;
@@ -219,7 +220,7 @@ public class Controller {
                     dao.inserir(investidor, data, "+", valor, "Real", cotacoes, 0.0);
                     JOptionPane.showMessageDialog(depositarReais, 
                                           "Depósito realizado com sucesso");
-                    ResultSet res = dao.consultar(investidor.getSenha());
+                    ResultSet res = dao.consultar(investidor.getCpf());
                     if (res.next()) {
                         double saldoReal = res.getDouble("saldoreal");
                         double saldoBitcoin = res.getDouble("saldobitcoin");
@@ -274,7 +275,7 @@ public class Controller {
                     );
                     JOptionPane.showMessageDialog(sacarReais, 
                                               "Saque realizado com sucesso");
-                    ResultSet res = dao.consultar(investidor.getSenha());
+                    ResultSet res = dao.consultar(investidor.getCpf());
                     if (res.next()) {
                         double saldoReal = res.getDouble("saldoreal");
                         double saldoBitcoin = res.getDouble("saldobitcoin");
@@ -479,20 +480,23 @@ public class Controller {
     
     // Troca o valor da cotação selecionada pelo usuário
     public void atualizarCotacao(AtualizarCotacao atualizarCot) {
-        Conexao conexao = new Conexao();
         double novaCot = 0;
+        double cotFormat = 0;
         if (atualizarCot.getBitcoinBtn().isSelected()) {
             novaCot = Double.parseDouble(atualizarCot.getCotBitcoin().getText());
             double cotAntiga = investidor.getCarteira().getBitcoin().getCotacao();
-            investidor.getCarteira().getBitcoin().setCotacao(novaCot * cotAntiga);
+            cotFormat = Math.round((novaCot * cotAntiga) * 100) / 100;
+            investidor.getCarteira().getBitcoin().setCotacao(cotFormat);
         } else if (atualizarCot.getEthereumBtn().isSelected()) {
             novaCot = Double.parseDouble(atualizarCot.getCotEthereum().getText());
             double cotAntiga = investidor.getCarteira().getEthereum().getCotacao();
-            investidor.getCarteira().getEthereum().setCotacao(novaCot * cotAntiga);
+            cotFormat = Math.round((novaCot * cotAntiga) * 100) / 100;
+            investidor.getCarteira().getEthereum().setCotacao(cotFormat);
         } else if (atualizarCot.getRippleBtn().isSelected()) {
             novaCot = Double.parseDouble(atualizarCot.getCotRipple().getText());
             double cotAntiga = investidor.getCarteira().getRipple().getCotacao();
-            investidor.getCarteira().getRipple().setCotacao(novaCot * cotAntiga);
+            cotFormat = Math.round((novaCot * cotAntiga) * 100) / 100;
+            investidor.getCarteira().getRipple().setCotacao(cotFormat);
         }
         JOptionPane.showMessageDialog(atualizarCot, "Atualizou com sucesso!");
     }
