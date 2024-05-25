@@ -38,7 +38,7 @@ public class TransacoesDAO {
     
     // Converte a data para o formato que a tabela possui
     public Timestamp stringToTimeStamp(String data) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date dataDate = formatter.parse(data);
         Timestamp dataTimestamp = new Timestamp(dataDate.getTime());
         return dataTimestamp;
