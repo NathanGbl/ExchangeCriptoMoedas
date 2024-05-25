@@ -42,6 +42,7 @@ public class Controller {
     private static Controller control;
     private Investidor investidor;
 
+    // Função feita para instanciar somente 1 controller
     public static Controller getControl() {
         if (control == null) {
             control = new Controller();
@@ -49,6 +50,8 @@ public class Controller {
         return control;
     }
     
+    // Função retorna true se o comprimento da senha e do cpf estiver certo e
+    // o cpf não tiver ponto nem traço
     public Boolean verificaCpfSenha(String cpf, int senha) {
         String senhaString = String.valueOf(senha);
         Boolean cpfSenhaValidos = true;
@@ -65,6 +68,8 @@ public class Controller {
         return cpfSenhaValidos;
     }
     
+    // Insere os dados na variável investidor e se já tiver feito uma transação,
+    // o contrutor é passado com os saldos que estiverem no banco de dados.
     public void loginInvestidor(String cpf, int senha, Login login) {
         Conexao conexao = new Conexao();
         try {
@@ -110,6 +115,7 @@ public class Controller {
         }
     }
     
+    // Manda uma requisição pedindo a última linha da tabela com base na data.
     public void consultarSaldo(ConsultarSaldo consultSaldo, int senha) {
         Conexao conexao = new Conexao();
         try {
@@ -144,6 +150,8 @@ public class Controller {
         }
     }
     
+    // Manda uma requisição pedindo todas as ocorrências da senha e imprime o
+    // resultado
     public void consultarExtrato(ConsultarExtrato consultarExtrato, int senha) {
         Conexao conexao = new Conexao();
         try {
@@ -189,6 +197,10 @@ public class Controller {
         }
     }
     
+    // Verifica se o valor está correto e depois faz o depósito.
+    // Se o saldo não alterou, então o saldo ficaria menor que 0
+    // Se o saldo alterou, faz a conta e manda inserir uma nova linha na tabela
+    // transacoes
     public void depositar(DepositarReais depositarReais, 
                           String deposito) throws ParseException {
         Conexao conexao = new Conexao();
@@ -233,6 +245,10 @@ public class Controller {
         }
     }
     
+    // Verifica se o valor está correto e depois faz o saque.
+    // Se o saldo não alterou, então o saldo ficaria menor que 0
+    // Se o saldo alterou, faz a conta e manda inserir uma nova linha na tabela
+    // transacoes
     public void sacar(SacarReais sacarReais, String valor) throws ParseException {
         Conexao conexao = new Conexao();
         double saque = Double.parseDouble(valor);
@@ -277,13 +293,15 @@ public class Controller {
                 }
             } else {
                 JOptionPane.showMessageDialog(sacarReais, "Valor inválido");
-            }
-//           
+            }   
         } catch (SQLException e) {
             System.out.println(e);
         }
     }
-//    
+
+    // Realiza a compra pela opção escolhida do investidor e pelo valor.
+    // Se o valor não deixar o saldoreal negativo, então realiza a operação.
+    // Depois insere uma nova linha na tabela com os dados.
     public void comprarCripto(ComprarCriptoMoedas comprarCripto, 
             double compra, 
             int senha) 
@@ -361,6 +379,10 @@ public class Controller {
             System.out.println(e);
         }
     }
+    
+    // Realiza a venda pela opção escolhida do investidor e pelo valor.
+    // Se o valor não deixar o saldo da moeda negativo, então realiza a operação.
+    // Depois insere uma nova linha na tabela com os dados.
     public void venderCripto(VenderCriptoMoedas venderCripto, 
             double venda, 
             int senha) 
@@ -444,6 +466,7 @@ public class Controller {
         }
     }
     
+    // Função que coloca um valor no text field da cotação da moeda selecionada
     public void novaCotacao(AtualizarCotacao atualizarCot) {
         double novaCotacao = Moedas.novaCotacao();
         String novaCot = String.valueOf(novaCotacao);
@@ -456,6 +479,7 @@ public class Controller {
         }
     }
     
+    // Troca o valor da cotação selecionada pelo usuário
     public void atualizarCotacao(AtualizarCotacao atualizarCot) {
         Conexao conexao = new Conexao();
         double novaCot = 0;

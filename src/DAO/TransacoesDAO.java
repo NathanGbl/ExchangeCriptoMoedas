@@ -8,12 +8,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import Model.Moedas;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.sql.Array;
 
 /**
  *
@@ -25,6 +23,7 @@ public class TransacoesDAO {
         this.conn = conn;
     }
     
+    /* Converte um array de double em string para inserir na tabela */
     public String doubleToString(double[] valores) {
         StringBuilder stringB = new StringBuilder("{");
         for(int i = 0; i < valores.length; i++) {
@@ -37,12 +36,15 @@ public class TransacoesDAO {
         return stringB.toString();
     }
     
+    // Converte a data para o formato que a tabela possui
     public Timestamp stringToTimeStamp(String data) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date dataDate = formatter.parse(data);
         Timestamp dataTimestamp = new Timestamp(dataDate.getTime());
         return dataTimestamp;
     }
+    
+    /* Insere todos os dados para uma nova linha na tabela */
     public void inserir (Investidor investidor, 
                          String data, 
                          String operacao, 
@@ -69,11 +71,9 @@ public class TransacoesDAO {
         statement.setDouble(11, investidor.getCarteira().getSaldoRipple());
         statement.execute();
     }
+    
+    /* Seleciona todas as ocorrências da senha na tabela */
     public ResultSet consultarExtrato (int senha) throws SQLException {
-
-//        String sql = "select * from aluno where usuário = '"
-//                     + aluno.getUsuario() + "'and senha = '"
-//                     + aluno.getSenha() + "'";
 
         String sql = "select * from transacoes where senha = ?";
 
@@ -85,11 +85,8 @@ public class TransacoesDAO {
         return resultado;
     }
     
+    /* Seleciona a última linha da tabela com base na data */
     public ResultSet consultar (int senha) throws SQLException {
-
-//        String sql = "select * from aluno where usuário = '"
-//                     + aluno.getUsuario() + "'and senha = '"
-//                     + aluno.getSenha() + "'";
 
         String sql = "select * from transacoes where senha = ? "
                 + "order by data desc limit 1";
@@ -100,15 +97,5 @@ public class TransacoesDAO {
         ResultSet resultado = statement.getResultSet();
        
         return resultado;
-    }
-    
-    public void atualizarCotacao(double[] novaCotacao) throws SQLException {
-        String sql = "update transacoes set cotacao = ? "
-                + "where data = (select max(data) from transacoes)";
-        PreparedStatement statement = conn.prepareStatement(sql);
-
-        String insertCot = doubleToString(novaCotacao);
-        statement.setObject(1, insertCot);
-        statement.execute();
     }
 }
