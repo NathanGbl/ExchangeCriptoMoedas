@@ -20,7 +20,10 @@ public class Carteira{
     private Bitcoin bitcoin;
     private Ethereum ethereum;
     private Ripple ripple;
-    public Carteira(double saldoReal, double saldoBitcoin, double saldoEthereum, double saldoRipple) {
+    public Carteira(double saldoReal, 
+                    double saldoBitcoin, 
+                    double saldoEthereum, 
+                    double saldoRipple) {
         this.bitcoin = ((Bitcoin)Moedas.fabricaMoedas("Bitcoin"));
         this.ethereum = ((Ethereum)Moedas.fabricaMoedas("Ethereum"));
         this.ripple = ((Ripple)Moedas.fabricaMoedas("Ripple"));
@@ -111,13 +114,18 @@ public class Carteira{
     public void saque(double valor, SacarReais sacarReais) {
         double montante = getSaldoReal() - valor;
         if (montante < 0) {
-            JOptionPane.showMessageDialog(sacarReais, "Saldo não pode ficar negativo");
+            JOptionPane.showMessageDialog(
+                    sacarReais, 
+                    "Saldo não pode ficar negativo"
+            );
         } else {
             setSaldoReal(montante);
         }
     }
     
-    public void comprarCripto(double valor, String moeda, ComprarCriptoMoedas comprarCripto) {
+    public void comprarCripto(double valor, 
+                              String moeda, 
+                              ComprarCriptoMoedas comprarCripto) {
         double montante;
         double saldoFuturo;
         Boolean saldoNegativo = false;
@@ -150,11 +158,18 @@ public class Carteira{
             }
         }
         if (saldoNegativo) {
-            JOptionPane.showMessageDialog(comprarCripto, "Saldo não pode ficar negativo");
+            JOptionPane.showMessageDialog(
+                    comprarCripto, 
+                    "Saldo não pode ficar negativo"
+            );
         }
     }
     
-    public void venderCripto(double valor, String moeda, VenderCriptoMoedas venderCripto) {
+    public void venderCripto(
+            double valor, 
+            String moeda, 
+            VenderCriptoMoedas venderCripto
+    ) {
         double montante;
         double saldoFuturo;
         Boolean saldoNegativo = false;

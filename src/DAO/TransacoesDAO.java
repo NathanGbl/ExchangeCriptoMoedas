@@ -91,7 +91,8 @@ public class TransacoesDAO {
 //                     + aluno.getUsuario() + "'and senha = '"
 //                     + aluno.getSenha() + "'";
 
-        String sql = "select * from transacoes where senha = ? order by data desc limit 1";
+        String sql = "select * from transacoes where senha = ? "
+                + "order by data desc limit 1";
 
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setInt(1, senha);

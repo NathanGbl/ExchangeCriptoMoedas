@@ -21,7 +21,12 @@ public class Investidor extends Pessoa{
         carteira = new Carteira();
     }
     
-    public Investidor(String nome, String cpf, int senha, double saldoReal, double saldoBitcoin, double saldoEthereum, double saldoRipple) {
+    public Investidor(String nome, 
+            String cpf, int senha, 
+            double saldoReal, 
+            double saldoBitcoin, 
+            double saldoEthereum, 
+            double saldoRipple) {
         super(nome, cpf, senha);
         carteira = new Carteira(saldoReal, saldoBitcoin, saldoEthereum, saldoRipple);
     }
