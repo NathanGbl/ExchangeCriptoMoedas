@@ -206,7 +206,6 @@ public class Controller {
         double valor = Double.parseDouble(deposito);
         try {
             if (valor >= 0) {
-                System.out.println("Foi0");
                 Connection conn = conexao.getConnection();
                 TransacoesDAO dao = new TransacoesDAO(conn);
                 double saldoAntes = investidor.getCarteira().getSaldoReal();

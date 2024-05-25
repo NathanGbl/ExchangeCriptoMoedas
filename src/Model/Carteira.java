@@ -101,7 +101,7 @@ public class Carteira{
     
     public String getDataNow() {
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String dataHoraAtual = now.format(forma);
         return dataHoraAtual;
     }
