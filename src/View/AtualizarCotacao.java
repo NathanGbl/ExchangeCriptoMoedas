@@ -4,7 +4,6 @@
  */
 package View;
 
-import Control.Controller;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -239,6 +238,11 @@ public class AtualizarCotacao extends javax.swing.JFrame {
         );
 
         novaCotacaoBtn.setText("Nova Cotação");
+        novaCotacaoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novaCotacaoBtnActionPerformed(evt);
+            }
+        });
 
         voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
         voltarBtn.setBorder(null);
@@ -294,7 +298,7 @@ public class AtualizarCotacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizaBtnActionPerformed
-//        control.atualizarCotacao(this);
+        control.atualizarCotacao(this);
     }//GEN-LAST:event_atualizaBtnActionPerformed
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
@@ -302,6 +306,10 @@ public class AtualizarCotacao extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
+
+    private void novaCotacaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaCotacaoBtnActionPerformed
+        control.novaCotacao(this);
+    }//GEN-LAST:event_novaCotacaoBtnActionPerformed
 
     /**
      * @param args the command line arguments

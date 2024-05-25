@@ -4,6 +4,10 @@
  */
 package View;
 
+import Control.Controller;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -92,6 +96,7 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+        control = Controller.getControl();
     }
 
     /**
@@ -168,6 +173,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         sairBtn.setText("Sair");
+        sairBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sairBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,44 +231,54 @@ public class Menu extends javax.swing.JFrame {
     private void consultarSaldoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarSaldoBtnActionPerformed
         ConsultarSaldo consultSaldo = new ConsultarSaldo();
         consultSaldo.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_consultarSaldoBtnActionPerformed
 
     private void consultarExtratoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarExtratoBtnActionPerformed
         ConsultarExtrato consultExtrato = new ConsultarExtrato();
         consultExtrato.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_consultarExtratoBtnActionPerformed
 
     private void depositarReaisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositarReaisBtnActionPerformed
         DepositarReais depositReais = new DepositarReais();
         depositReais.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_depositarReaisBtnActionPerformed
 
     private void sacarReaisBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacarReaisBtnActionPerformed
         SacarReais sacarReais = new SacarReais();
         sacarReais.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_sacarReaisBtnActionPerformed
 
     private void comprarCriptomoedasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarCriptomoedasBtnActionPerformed
-        ComprarCriptoMoedas comprarCripto = new ComprarCriptoMoedas();
-        comprarCripto.setVisible(true);
-        this.setVisible(false);
+        ComprarCriptoMoedas comprarCripto;
+        try {
+            comprarCripto = new ComprarCriptoMoedas();
+            comprarCripto.setVisible(true);
+        this.dispose();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
     }//GEN-LAST:event_comprarCriptomoedasBtnActionPerformed
 
     private void venderCriptomoedasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderCriptomoedasBtnActionPerformed
         VenderCriptoMoedas venderCripto = new VenderCriptoMoedas();
         venderCripto.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_venderCriptomoedasBtnActionPerformed
 
     private void atualizarCotacaoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarCotacaoBtnActionPerformed
         AtualizarCotacao atualizaCot = new AtualizarCotacao();
         atualizaCot.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_atualizarCotacaoBtnActionPerformed
+
+    private void sairBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairBtnActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_sairBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,6 +315,7 @@ public class Menu extends javax.swing.JFrame {
 //        });
 //    }
 
+    private Controller control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizarCotacaoBtn;
     private javax.swing.JButton comprarCriptomoedasBtn;

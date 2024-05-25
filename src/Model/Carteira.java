@@ -124,8 +124,8 @@ public class Carteira{
         if (moeda.equals("Bitcoin")) {
             saldoFuturo = saldoReal - valor * bitcoin.getTaxaCompra();
             if (saldoFuturo >= 0) {
-                setSaldoReal(saldoFuturo);
-                montante = valor / bitcoin.getCotacao();
+                saldoReal -= saldoFuturo;
+                montante = valor * bitcoin.getTaxaCompra() / bitcoin.getCotacao();
                 saldoBitcoin += montante;
             } else {
                 saldoNegativo = true;
@@ -133,8 +133,8 @@ public class Carteira{
         } else if (moeda.equals("Ethereum")) {
             saldoFuturo = saldoReal - valor * ethereum.getTaxaCompra();
             if (saldoFuturo >= 0) {
-                setSaldoReal(saldoFuturo);
-                montante = valor / bitcoin.getCotacao();
+                saldoReal -= saldoFuturo;
+                montante = valor * ethereum.getTaxaCompra() / ethereum.getCotacao();
                 saldoEthereum += montante;
             } else {
                 saldoNegativo = true;
@@ -142,8 +142,8 @@ public class Carteira{
         } else if (moeda.equals("Ripple")) {
             saldoFuturo = saldoReal - valor * ripple.getTaxaCompra();
             if (saldoFuturo >= 0) {
-                setSaldoReal(saldoFuturo);
-                montante = valor / bitcoin.getCotacao();
+                saldoReal -= saldoFuturo;
+                montante = valor * ripple.getTaxaCompra() / ripple.getCotacao();
                 saldoRipple += montante;
             } else {
                 saldoNegativo = true;
@@ -162,8 +162,7 @@ public class Carteira{
             saldoFuturo = saldoBitcoin - valor * bitcoin.getTaxaVenda();
             if (saldoFuturo >= 0) {
                 saldoBitcoin -= saldoFuturo;
-                setSaldoReal(saldoFuturo);
-                montante = saldoFuturo * bitcoin.getCotacao();
+                montante = valor * bitcoin.getTaxaVenda() * bitcoin.getCotacao();
                 saldoReal += montante;
             } else {
                 saldoNegativo = true;
@@ -172,8 +171,7 @@ public class Carteira{
             saldoFuturo = saldoEthereum - valor * ethereum.getTaxaVenda();
             if (saldoFuturo >= 0) {
                 saldoEthereum -= saldoFuturo;
-                setSaldoReal(saldoFuturo);
-                montante = saldoFuturo * ethereum.getCotacao();
+                montante = valor * ethereum.getTaxaVenda() * ethereum.getCotacao();
                 saldoReal += montante;
             } else {
                 saldoNegativo = true;
@@ -182,8 +180,7 @@ public class Carteira{
             saldoFuturo = saldoRipple - valor * ripple.getTaxaVenda();
             if (saldoFuturo >= 0) {
                 saldoRipple -= saldoFuturo;
-                setSaldoReal(saldoFuturo);
-                montante = saldoFuturo * ripple.getCotacao();
+                montante = ripple.getTaxaVenda() * ripple.getCotacao();
                 saldoReal += montante;
             } else {
                 saldoNegativo = true;

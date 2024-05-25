@@ -54,7 +54,6 @@ public class TransacoesDAO {
                 + "moeda, cotacao, taxa, saldoreal, saldobitcoin, "
                 + "saldoethereum, saldoripple) "
                 + "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String insertCotacao = doubleToString(cotacao);
         Timestamp insertData = stringToTimeStamp(data);
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setInt(1, investidor.getSenha());
@@ -103,7 +102,8 @@ public class TransacoesDAO {
     }
     
     public void atualizarCotacao(double[] novaCotacao) throws SQLException {
-        String sql = "update transacoes set cotacao = ? where data = (SELECT MAX(data) FROM transacoes)";
+        String sql = "update transacoes set cotacao = ? "
+                + "where data = (select max(data) from transacoes)";
         PreparedStatement statement = conn.prepareStatement(sql);
 
         String insertCot = doubleToString(novaCotacao);

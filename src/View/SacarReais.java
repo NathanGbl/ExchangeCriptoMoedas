@@ -5,6 +5,9 @@
 package View;
 
 import Control.Controller;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -170,8 +173,11 @@ public class SacarReais extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarBtnActionPerformed
 
     private void sacaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sacaBtnActionPerformed
-//        Double saque = Double.parseDouble(this.getTxtSaque().getText());
-//        control.sacar(this, saque);
+        try {
+            control.sacar(this, this.getTxtSaque().getText());
+        } catch (ParseException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_sacaBtnActionPerformed
 
     /**

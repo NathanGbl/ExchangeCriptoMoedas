@@ -5,6 +5,9 @@
 package View;
 
 import Control.Controller;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,6 +25,14 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
         return bitcoinBtn;
     }
 
+    public JTextField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JTextField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+
     public void setBitcoinBtn(JRadioButton bitcoinBtn) {
         this.bitcoinBtn = bitcoinBtn;
     }
@@ -32,30 +43,6 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
 
     public void setButtons(ButtonGroup buttons) {
         this.buttons = buttons;
-    }
-
-    public JTextField getCotBitcoin() {
-        return cotBitcoin;
-    }
-
-    public void setCotBitcoin(JTextField cotBitcoin) {
-        this.cotBitcoin = cotBitcoin;
-    }
-
-    public JTextField getCotEthereum() {
-        return cotEthereum;
-    }
-
-    public void setCotEthereum(JTextField cotEthereum) {
-        this.cotEthereum = cotEthereum;
-    }
-
-    public JTextField getCotRipple() {
-        return cotRipple;
-    }
-
-    public void setCotRipple(JTextField cotRipple) {
-        this.cotRipple = cotRipple;
     }
 
     public JRadioButton getEthereumBtn() {
@@ -96,30 +83,6 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
 
     public void setjPanel2(JPanel jPanel2) {
         this.jPanel2 = jPanel2;
-    }
-
-    public JLabel getLblCotBitcoin() {
-        return lblCotBitcoin;
-    }
-
-    public void setLblCotBitcoin(JLabel lblCotBitcoin) {
-        this.lblCotBitcoin = lblCotBitcoin;
-    }
-
-    public JLabel getLblCotEthereum() {
-        return lblCotEthereum;
-    }
-
-    public void setLblCotEthereum(JLabel lblCotEthereum) {
-        this.lblCotEthereum = lblCotEthereum;
-    }
-
-    public JLabel getLblCotRipple() {
-        return lblCotRipple;
-    }
-
-    public void setLblCotRipple(JLabel lblCotRipple) {
-        this.lblCotRipple = lblCotRipple;
     }
 
     public JLabel getLblVenda() {
@@ -188,16 +151,12 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
         bitcoinBtn = new javax.swing.JRadioButton();
         ethereumBtn = new javax.swing.JRadioButton();
         rippleBtn = new javax.swing.JRadioButton();
-        lblCotBitcoin = new javax.swing.JLabel();
-        lblCotEthereum = new javax.swing.JLabel();
-        lblCotRipple = new javax.swing.JLabel();
-        cotRipple = new javax.swing.JTextField();
-        cotEthereum = new javax.swing.JTextField();
-        cotBitcoin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         voltarBtn = new javax.swing.JButton();
+        lblVenda1 = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,12 +184,6 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
         buttons.add(rippleBtn);
         rippleBtn.setText("Ripple");
 
-        lblCotBitcoin.setText("Cotação:");
-
-        lblCotEthereum.setText("Cotação:");
-
-        lblCotRipple.setText("Cotação:");
-
         jLabel2.setText("Taxa de venda: 3%");
 
         jLabel4.setText("Taxa de venda: 2%");
@@ -245,32 +198,18 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bitcoinBtn)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblCotBitcoin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cotBitcoin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblCotEthereum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cotEthereum, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ethereumBtn))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblCotRipple)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cotRipple, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(rippleBtn)))
+                        .addComponent(ethereumBtn)
+                        .addGap(68, 68, 68)
+                        .addComponent(rippleBtn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,20 +219,12 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
                     .addComponent(bitcoinBtn)
                     .addComponent(ethereumBtn)
                     .addComponent(rippleBtn))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cotRipple, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCotRipple)
-                    .addComponent(lblCotEthereum)
-                    .addComponent(lblCotBitcoin)
-                    .addComponent(cotEthereum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cotBitcoin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         voltarBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/voltarIcon.png"))); // NOI18N
@@ -304,16 +235,15 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
             }
         });
 
+        lblVenda1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblVenda1.setText("Senha:");
+
+        txtSenha.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -324,9 +254,19 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
                         .addComponent(venderBtn))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102)
-                        .addComponent(titulo)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(102, 102, 102)
+                                .addComponent(titulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblVenda1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -336,11 +276,15 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(titulo)
                     .addComponent(voltarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVenda1))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVenda))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(venderBtn)
@@ -351,8 +295,13 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void venderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_venderBtnActionPerformed
-//        Double venda = Double.parseDouble(this.getTxtVenda().getText());
-//        control.comprarCripto(this, venda);// TODO add your handling code here:
+        Double venda = Double.parseDouble(this.getTxtVenda().getText());
+        int senha = Integer.parseInt(this.getTxtSenha().getText());
+        try {
+            control.venderCripto(this, venda, senha);
+        } catch (ParseException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_venderBtnActionPerformed
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
@@ -400,20 +349,16 @@ public class VenderCriptoMoedas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bitcoinBtn;
     private javax.swing.ButtonGroup buttons;
-    private javax.swing.JTextField cotBitcoin;
-    private javax.swing.JTextField cotEthereum;
-    private javax.swing.JTextField cotRipple;
     private javax.swing.JRadioButton ethereumBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblCotBitcoin;
-    private javax.swing.JLabel lblCotEthereum;
-    private javax.swing.JLabel lblCotRipple;
     private javax.swing.JLabel lblVenda;
+    private javax.swing.JLabel lblVenda1;
     private javax.swing.JRadioButton rippleBtn;
     private javax.swing.JLabel titulo;
+    private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtVenda;
     private javax.swing.JButton venderBtn;
     private javax.swing.JButton voltarBtn;

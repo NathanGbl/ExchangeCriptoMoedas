@@ -11,8 +11,8 @@ import java.util.Random;
  * @author unifnleite
  */
 public class Ethereum extends Moedas implements Tarifacao {
-    private double taxaCompra = 1.01;
-    private double taxaVenda = 1.02;
+    private double taxaCompra = 0.99;
+    private double taxaVenda = 0.98;
     
     private double cotacao = Moedas.novaCotacao();
     
