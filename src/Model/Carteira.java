@@ -132,7 +132,7 @@ public class Carteira{
         if (moeda.equals("Bitcoin")) {
             saldoFuturo = saldoReal - valor * bitcoin.getTaxaCompra();
             if (saldoFuturo >= 0) {
-                saldoReal -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
                 montante = valor * bitcoin.getTaxaCompra() / bitcoin.getCotacao();
                 saldoBitcoin += montante;
             } else {
@@ -141,7 +141,7 @@ public class Carteira{
         } else if (moeda.equals("Ethereum")) {
             saldoFuturo = saldoReal - valor * ethereum.getTaxaCompra();
             if (saldoFuturo >= 0) {
-                saldoReal -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
                 montante = valor * ethereum.getTaxaCompra() / ethereum.getCotacao();
                 saldoEthereum += montante;
             } else {
@@ -150,7 +150,7 @@ public class Carteira{
         } else if (moeda.equals("Ripple")) {
             saldoFuturo = saldoReal - valor * ripple.getTaxaCompra();
             if (saldoFuturo >= 0) {
-                saldoReal -= saldoFuturo;
+                setSaldoReal(saldoFuturo);
                 montante = valor * ripple.getTaxaCompra() / ripple.getCotacao();
                 saldoRipple += montante;
             } else {
@@ -176,7 +176,7 @@ public class Carteira{
         if (moeda.equals("Bitcoin")) {
             saldoFuturo = saldoBitcoin - valor * bitcoin.getTaxaVenda();
             if (saldoFuturo >= 0) {
-                saldoBitcoin -= saldoFuturo;
+                setSaldoBitcoin(saldoFuturo);
                 montante = valor * bitcoin.getTaxaVenda() * bitcoin.getCotacao();
                 saldoReal += montante;
             } else {
@@ -185,7 +185,7 @@ public class Carteira{
         } else if (moeda.equals("Ethereum")) {
             saldoFuturo = saldoEthereum - valor * ethereum.getTaxaVenda();
             if (saldoFuturo >= 0) {
-                saldoEthereum -= saldoFuturo;
+                setSaldoEthereum(saldoFuturo);
                 montante = valor * ethereum.getTaxaVenda() * ethereum.getCotacao();
                 saldoReal += montante;
             } else {
@@ -194,7 +194,7 @@ public class Carteira{
         } else if (moeda.equals("Ripple")) {
             saldoFuturo = saldoRipple - valor * ripple.getTaxaVenda();
             if (saldoFuturo >= 0) {
-                saldoRipple -= saldoFuturo;
+                setSaldoRipple(saldoFuturo);
                 montante = ripple.getTaxaVenda() * ripple.getCotacao();
                 saldoReal += montante;
             } else {

@@ -72,12 +72,15 @@ public class Controller {
     // o contrutor é passado com os saldos que estiverem no banco de dados.
     public void loginInvestidor(String cpf, int senha, Login login) {
         Conexao conexao = new Conexao();
+        System.out.println("foi");
         try {
+            System.out.println("foi");
             double saldoReal;
             double saldoBitcoin;
             double saldoEthereum;
             double saldoRipple;
             Connection conn = conexao.getConnection();
+            System.out.println("foi");
             if (verificaCpfSenha(cpf, senha)) {
                 InvestidoresDAO daoInvestidores = new InvestidoresDAO(conn);
                 TransacoesDAO daoTransacoes = new TransacoesDAO(conn);
@@ -88,10 +91,10 @@ public class Controller {
                     cpf = res.getString("cpf");
                     senha = res.getInt("senha");
                     if (resTransacoes.next()) {
-                        saldoReal = resTransacoes.getDouble("saldoReal");
-                        saldoBitcoin = resTransacoes.getDouble("saldoBitcoin");
-                        saldoEthereum = resTransacoes.getDouble("saldoEthereum");
-                        saldoRipple = resTransacoes.getDouble("saldoRipple");
+                        saldoReal = resTransacoes.getDouble("saldoreal");
+                        saldoBitcoin = resTransacoes.getDouble("saldobitcoin");
+                        saldoEthereum = resTransacoes.getDouble("saldoethereum");
+                        saldoRipple = resTransacoes.getDouble("saldoripple");
                     } else {
                         saldoReal = 0;
                         saldoBitcoin = 0;
@@ -120,13 +123,9 @@ public class Controller {
         Conexao conexao = new Conexao();
         try {
             if (verificaCpfSenha(investidor.getCpf(), senha)) {
-                System.out.println("Foi0");
                 Connection conn = conexao.getConnection();
-                System.out.println("Foi1");
                 TransacoesDAO dao = new TransacoesDAO(conn);
-                System.out.println("Foi-1");
                 ResultSet res = dao.consultar(senha);
-                System.out.println("Foi2");
                 if (res.next()) {
                   System.out.println("Foi3");
                     String info = String.format(
